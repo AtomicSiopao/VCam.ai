@@ -1,0 +1,11 @@
+node_modules
+cypress/e2e/1-getting-started
+cypress/e2e/2-advanced-examples
+cypress/screenshots
+pnpm-lock.yaml
+.env
+log
+*.log
+results/
+downloads/
+cypress.env.json

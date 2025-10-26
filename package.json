@@ -1,0 +1,16 @@
+{
+  "name": "thelab",
+  "version": "1.0.0",
+  "description": "",
+  "packageManager": "pnpm@10.15.1",
+  "devDependencies": {
+    "cypress": "^15.2.0",
+    "cypress-real-events": "^1.15.0"
+  },
+  "scripts": {
+    "cy:open": "cypress open",
+    "e2e:chrome": "cypress run --browser chrome",
+    "e2e:electron": "cypress run --browser electron",
+    "e2e:headed": "cypress run --headed"
+  }
+}
