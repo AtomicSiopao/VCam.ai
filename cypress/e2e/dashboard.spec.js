@@ -13,102 +13,114 @@ describe("VCam.ai Dashboard", () => {
     cy.ignoreReactError();
   });
 
-  //LOGIN
-  // it("Should login to VCam.ai Dashboard using valid credentials", () => {
-  //   login.login();
-  // });
-
-  // DASHBOARD NAVIGATION
-  it("Should check navigation in the Dashboard while logged in", () => {
-    dashboard.goToDashboard();
-    dashboard.goToBackgrounds();
-    dashboard.goToLogos();
-    dashboard.goToNameTags();
-    dashboard.goToTeam();
-    dashboard.goToBilling();
-    dashboard.goToBillingFromDashboard();
-    dashboard.goToSettings();
+  describe("DASHBOARD NAVIGATION", () => {
+    it("Should check navigation in the Dashboard while logged in", () => {
+      dashboard.navigateTo("Dashboard");
+      dashboard.navigateTo("Backgrounds");
+      dashboard.navigateTo("Logos");
+      dashboard.navigateTo("Name Tags");
+      dashboard.navigateTo("Team");
+      dashboard.navigateTo("Billing");
+      dashboard.navigateToBillingFromDashboard();
+      dashboard.navigateTo("Settings");
+    });
   });
 
-  // BACKGROUNDS
-  it("Should go to the Backgrounds page and upload image file as background then remove all backgrounds", () => {
-    dashboard.goToBackgrounds();
-    background.addBackgroundByImageUpload();
-    background.deleteBackground(); // cleanup
+  describe("BACKGROUNDS", () => {
+    beforeEach(() => {
+      dashboard.navigateTo("Backgrounds");
+    });
+
+    it("Should upload image file as background then remove all backgrounds", () => {
+      background.addBackground("image");
+      background.deleteBackground(); // cleanup
+    });
+
+    it("Should upload video file as background", () => {
+      background.addBackground("video");
+      background.deleteBackground(); // cleanup
+    });
+
+    it("Should select a stock photo as background", () => {
+      background.addBackground("stock");
+      background.setBackgroundStateMemberSettings(1);
+      background.setBackgroundPermissionSettings(0);
+      background.deleteBackground(); // cleanup
+    });
   });
 
-  it("Should go to the Backgrounds page and upload video file as background ", () => {
-    dashboard.goToBackgrounds();
-    background.addBackgroundByVideoUpload();
-    background.deleteBackground(); // cleanup
+  describe("LOGOS", () => {
+    beforeEach(() => {
+      dashboard.navigateTo("Logos");
+    });
+
+    it("Should upload image file as logo", () => {
+      logo.addLogoByImageUpload();
+      logo.deleteLogo(); // cleanup
+    });
+
+    it("Should upload video file as logo", () => {
+      logo.addLogoByVideoUpload();
+      logo.setLogoPermissionSettings(1);
+      logo.deleteLogo(); // cleanup
+    });
   });
 
-  it("Should go to the Backgrounds page and select a stock photo as background ", () => {
-    dashboard.goToBackgrounds();
-    background.addBackgroundByStockPhoto();
-    background.setBackgroundStateMemberSettings(1);
-    background.setBackgroundPermissionSettings(0);
-    background.deleteBackground(); // cleanup
+  describe("NAME TAGS", () => {
+    beforeEach(() => {
+      dashboard.navigateTo("Name Tags");
+    });
+
+    it("Should setup a Name Tag", () => {
+      nametag.selectNameTagDesign(2);
+      nametag.setNameTag("KopiBoi", "Resident Sleeper");
+      nametag.allowNameTagsInApp(0); // 1 to enable
+      nametag.allowMembersToToggleNameTag(0);
+      nametag.allowMembersToSetDetails(0);
+      nametag.allowMembersToSetDesign(0);
+      nametag.selectNameTagDesign(0); //Cleanup. Set to default design again.
+    });
   });
 
-  // LOGOS
-  it("Should go to the Logos page and upload image file as logo ", () => {
-    dashboard.goToLogos();
-    logo.addLogoByImageUpload();
-    logo.deleteLogo(); // cleanup
+  describe("SETTINGS", () => {
+    beforeEach(() => {
+      dashboard.navigateTo("Settings");
+    });
+
+    it("Should set new workspace name", () => {
+      settings.renameWorkspace("Workspace ni Kopi");
+    });
+
+    it("Should leave workspace if account has more than 1 workspace", () => {
+      settings.leaveWorkspace();
+    });
+
+    it("Should delete workspace if account has more than 1 workspace", () => {
+      settings.deleteWorkspace();
+    });
+
+    it.skip("SKIP: Domain and Workspace Discovery - Current LIMITATION", () => {
+      // Workspace Discovery cannot be tested via automation
+      const domain = "marco.com";
+      const verificationEmail = "kopi@marco.com";
+      settings.addDomain(domain, "Invite only", verificationEmail); // type: Instant Access, Request to join, Invite only
+    });
   });
 
-  it("Should go to the Logos page and upload video file as logo ", () => {
-    dashboard.goToLogos();
-    logo.addLogoByVideoUpload();
-    logo.setLogoPermissionSettings(1);
-    logo.deleteLogo(); // cleanup
-  });
+  describe("TEAM", () => {
+    beforeEach(() => {
+      dashboard.navigateTo("Team");
+    });
 
-  // NAME TAGS
-  it("Should go to Name Tags and setup a Name Tag", () => {
-    dashboard.goToNameTags();
-    nametag.selectNameTagDesign(2);
-    nametag.setNameTag("KopiBoi", "Resident Sleeper");
-    nametag.allowNameTagsInApp(0); // 1 to enable
-    nametag.allowMembersToToggleNameTag(0);
-    nametag.allowMembersToSetDetails(0);
-    nametag.allowMembersToSetDesign(0);
-    nametag.selectNameTagDesign(0); //Cleanup. Set to default design again.
-  });
-
-  it("Should go to Settings and set new workspace name", () => {
-    dashboard.goToSettings();
-    settings.renameWorkspace("Workspace ni Kopi");
-  });
-
-  it("Should go to Settings and leave workspace if account has more than 1 workspace", () => {
-    dashboard.goToSettings();
-    settings.leaveWorkspace();
-  });
-
-  it("Should go to Settings set delete workspace if account has more than 1 workspace", () => {
-    dashboard.goToSettings();
-    settings.deleteWorkspace();
-  });
-
-  it.skip("SKIP: Domain and Workspace Discovery - Current LIMITATION", () => {
-    // Workspace Discovery cannot be tested via automation
-    const domain = "marco.com";
-    const verificationEmail = "kopi@marco.com";
-    dashboard.goToSettings();
-    settings.addDomain(domain, "Invite only", verificationEmail); // type: Instant Access, Request to join, Invite only
-  });
-
-  it.skip("[SKIP] Should invite Users/Team Members via the Team Menu", () => {
-    const emails = [
-      "test@tesuto.com",
-      "test2@tesuto.com",
-      "test3@tesuto.com",
-      //"test4@test.com",
-      //"test5@test.com",
-    ];
-    dashboard.goToTeam();
-    team.inviteUsers(emails, "Member");
+    it.skip("[SKIP] Should invite Users/Team Members via the Team Menu", () => {
+      const emails = [
+        "test@tesuto.com",
+        "test2@tesuto.com",
+        "test3@tesuto.com",
+        //"test4@test.com",
+        //"test5@test.com",
+      ];
+      team.inviteUsers(emails, "Member");
+    });
   });
 });

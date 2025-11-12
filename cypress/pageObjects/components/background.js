@@ -180,48 +180,27 @@ class BackgroundPage {
   }
 
   // ====== FLOWS ======
-  /**
-   * Adds background via image upload and verifies that new bg is counted
-   */
-  addBackgroundByImageUpload() {
+  addBackground(type, options = {}) {
     return this.backgroundsList.then((beforeCount) => {
-      this.logCount("Before image upload", beforeCount);
-
-      this.clickAddBackgroundButton();
-      this.uploadAnImage();
-
-      cy.wait(7000);
-
-      return this.waitForUploadCompletion(beforeCount);
-    });
-  }
-
-  /**
-   * Adds background via video upload and verifies that new bg is counted
-   */
-  addBackgroundByVideoUpload() {
-    return this.backgroundsList.then((beforeCount) => {
-      this.logCount("Before video upload", beforeCount);
-
-      this.clickAddBackgroundButton();
-      this.uploadAVideo();
-      cy.wait(7000);
-
-      return this.waitForUploadCompletion(beforeCount);
-    });
-  }
-
-  /**
-   * Adds background using Unsplash stock photo and verifies that new bg is counted
-   */
-  addBackgroundByStockPhoto() {
-    return this.backgroundsList.then((beforeCount) => {
-      this.logCount("Before stock photo upload", beforeCount);
+      this.logCount(`Before ${type} upload`, beforeCount);
       this.clickAddBackgroundButton();
 
-      this.clickStockPhotoByUnsplash().click();
-      this.unsplashList.should("exist").children().first().click();
-      this.saveBackgroundsButton.click();
+      switch (type) {
+        case "image":
+          this.uploadAnImage();
+          break;
+        case "video":
+          this.uploadAVideo();
+          break;
+        case "stock":
+          this.clickStockPhotoByUnsplash().click();
+          this.unsplashList.should("exist").children().first().click();
+          this.saveBackgroundsButton.click();
+          break;
+        default:
+          throw new Error(`Invalid background type: ${type}`);
+      }
+
       cy.wait(7000);
       return this.waitForUploadCompletion(beforeCount);
     });

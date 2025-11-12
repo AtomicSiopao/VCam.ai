@@ -17,7 +17,7 @@ describe("VCam.ai Dashboard", () => {
     ];
     login.login();
     cy.ignoreReactError();
-    dashboard.goToTeam();
+    dashboard.navigateTo("Team");
     team.inviteUsers(emails, "Admin");
   });
 });

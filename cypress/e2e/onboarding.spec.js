@@ -13,7 +13,7 @@ describe("VCam.ai Dashboard", () => {
   it("Should login and select 'For Personal Use' on the onboarding page", () => {
     onboarding.setForPersonalUse();
     onboarding.downloadVCam();
-    dashboard.goToSettings();
+    dashboard.navigateTo("Settings");
     settings.deleteWorkspace();
   });
 
@@ -28,7 +28,7 @@ describe("VCam.ai Dashboard", () => {
     ];
     onboarding.setForTeamUse();
     onboarding.setupTeamWorkspace(wsName, members);
-    dashboard.goToSettings();
+    dashboard.navigateTo("Settings");
     settings.workspaceName.should('eq', wsName);
   });
 });
