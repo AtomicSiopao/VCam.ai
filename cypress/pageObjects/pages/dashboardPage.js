@@ -51,91 +51,23 @@ class DashboardPage {
     return this;
   }
 
-  // ====== NAVIGATION SHORTCUTS ======
-  // GENERAL
-  clickDashboard() {
-    return this.clickLink("Dashboard");
-  }
-  clickDownloadForWindows() {
-    return this.clickLink("Download for Windows");
-  }
-  clickLearnHowToUseVCam() {
-    return this.clickLink("Learn how to use VCam");
-  }
-  clickSeePlans() {
-    return this.clickLink("See plans");
-  }
-  clickInviteTeamNow() {
-    return this.clickLink("Invite team now");
-  }
-  clickManage() {
-    return this.clickLink("Manage");
+  // ====== NAVIGATION ======
+  navigateTo(page) {
+    if (page.toLowerCase() === "dashboard") {
+      this.clickLink("Backgrounds");
+      this.checkURL("dashboard");
+    } else {
+      this.clickLink(page);
+      this.checkURL(page);
+    }
+    return this;
   }
 
-  // APP
-  clickBackgrounds() {
-    return this.clickLink("Backgrounds");
-  }
-  clickLogos() {
-    return this.clickLink("Logos");
-  }
-  clickNameTags() {
-    return this.clickLink("Name Tags");
-  }
-
-  // WORKSPACE
-  clickTeam() {
-    return this.clickLink("Team");
-  }
-  clickBilling() {
-    return this.clickLink("Billing");
-  }
-  clickSettings() {
-    return this.clickLink("Settings");
-  }
-  clickDeployment() {
-    return this.clickLink("Deployment");
-  }
-
-  // OTHERS
-  clickHelpCenter() {
-    return this.clickLink("Help center");
-  }
-  clickGiveFeedback() {
-    return this.clickLink("Give feedback");
-  }
-
-  // ====== GO TO ======
-  goToDashboard() {
-    this.clickBackgrounds().checkURL("dashboard");
-  }
-
-  goToBackgrounds() {
-    this.clickBackgrounds().checkURL("backgrounds");
-  }
-
-  goToLogos() {
-    this.clickLogos().checkURL("logos");
-  }
-
-  goToNameTags() {
-    this.clickNameTags().checkURL("name tags");
-  }
-
-  goToTeam() {
-    this.clickTeam().checkURL("team");
-  }
-
-  goToBilling() {
-    this.clickBilling().checkURL("billing");
-  }
-
-  goToBillingFromDashboard() {
-    this.clickDashboard().clickSeePlans().checkURL("billing");
-  }
-
-  goToSettings() {
-    this.clickSettings().checkURL("settings");
+  navigateToBillingFromDashboard() {
+    this.clickLink("Dashboard");
+    this.clickLink("See plans");
+    this.checkURL("billing");
+    return this;
   }
 }
 
