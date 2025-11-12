@@ -27,41 +27,9 @@ class header {
   }
 
   checkHeaderLinks() {
-    const headerLinks = [
-      {
-        text: "Finance",
-        url: "https://www.vcam.ai/use-cases/finance",
-      },
-      {
-        text: "Telehealth",
-        url: "https://www.vcam.ai/use-cases/telehealth",
-      },
-      {
-        text: "Remote Work",
-        url: "https://www.vcam.ai/use-cases/remote-work",
-      },
-      {
-        text: "Content Creators",
-        url: "https://www.vcam.ai/use-cases/content-creators",
-      },
-      {
-        text: "Education",
-        url: "https://www.vcam.ai/use-cases/education",
-      },
-      {
-        text: "Features",
-        url: "https://www.vcam.ai/features",
-      },
-      {
-        text: "Pricing",
-        url: "https://www.vcam.ai/pricing",
-      },
-      {
-        text: "News & Blog",
-        url: "https://www.vcam.ai/blog",
-      },
-    ];
-    headerLinks.map(({ text, url }) => this.checkURLInLink(text, url));
+    cy.fixture("links.json").then((links) => {
+      links.headerLinks.map(({ text, url }) => this.checkURLInLink(text, url));
+    });
   }
 }
 
