@@ -47,9 +47,10 @@ class NameTagPage {
   selectNameTagDesign(index) {
     return this.nameTagDesigns
       .eq(index)
+      .should("be.visible")
       .realHover()
       .within(() => {
-        this.nameTagDesignDropdown.click();
+        this.nameTagDesignDropdown.click({force: true});
         this.setAsDefault.click({ force: true });
       });
   }

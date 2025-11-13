@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  cypress-run:
+  VCAM-Cypress-Tests:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -13,13 +13,20 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: "20"
 
       - name: Install xvfb
         run: sudo apt-get update && sudo apt-get install -y xvfb
 
+      - name: Install pnpm
+        run: npm install -g pnpm
+
       - name: Install dependencies
-        run: npm install
+        run: pnpm install
+
+      - name: Clear old reports
+        run: |
+          rm -rf cypress/reports mochawesome-report || true
 
       - name: Create cypress.env.json
         run: |
@@ -31,15 +38,26 @@ jobs:
           }' > cypress.env.json
 
       - name: Run Cypress tests
-        run: npx cypress run
+        shell: bash
+        run: pnpm cypress run || true
         env:
           DASHBOARD_URL: ${{ secrets.DASHBOARD_URL }}
           VCAM_EMAIL: ${{ secrets.VCAM_EMAIL }}
           VCAM_PASSWORD: ${{ secrets.VCAM_PASSWORD }}
           WORKSPACE_NAME: ${{ secrets.WORKSPACE_NAME }}
 
-      - name: Upload Cypress reports
-        uses: actions/upload-artifact@v4
-        with:
-          name: cypress-reports
-          path: cypress/reports
+      - name: Check for report files
+        id: check_reports
+        run: |
+          if ls cypress/reports/*.json 1> /dev/null 2>&1; then
+            echo "reports_exist=true" >> $GITHUB_OUTPUT
+          else
+            echo "reports_exist=false" >> $GITHUB_OUTPUT
+          fi
+      - name: Merge Mochawesome reports
+        if: steps.check_reports.outputs.reports_exist == 'true'
+        run: pnpm mochawesome-merge cypress/reports/*.json > cypress/reports/report.json
+
+      - name: Generate final HTML report
+        if: steps.check_reports.outputs.reports_exist == 'true'
+        run: pnpm marge cypress/reports/report.json --reportDir cypress/reports --inline

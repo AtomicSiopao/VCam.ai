@@ -1,5 +1,5 @@
 {
-  "name": "thelab",
+  "name": "vcamai",
   "version": "1.0.0",
   "description": "",
   "packageManager": "pnpm@10.15.1",
@@ -17,7 +17,7 @@
     "e2e:electron": "cypress run --browser electron",
     "e2e:headed": "cypress run --headed",
     "test": "cypress run && pnpm run report",
-    "merge-reports": "npx mochawesome-merge cypress/reports/*.json > cypress/reports/report.json",
+    "merge-reports": "pnpm mochawesome-merge cypress/reports/*.json > cypress/reports/report.json",
     "generate-report": "marge cypress/reports/report.json -f final-report -o cypress/reports/html",
     "report": "pnpm run merge-reports && pnpm run generate-report"
   }

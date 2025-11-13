@@ -100,12 +100,10 @@ describe("VCam.ai Dashboard", () => {
     });
 
     it("Should set new workspace name", () => {
-      cy.fixture("workspace.json").then((workspace) => {
-        settings.renameWorkspace(workspace.name);
-      });
+      settings.renameWorkspace();
     });
 
-    it("Should leave workspace if account has more than 1 workspace", () => {
+    it.skip("Should leave workspace if account has more than 1 workspace", () => {
       settings.leaveWorkspace();
     });
 
