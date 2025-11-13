@@ -53,6 +53,9 @@ class DashboardPage {
 
   // ====== NAVIGATION ======
   navigateTo(page) {
+    // Wait for a stable navigation element to ensure the menu is loaded
+    this.getLinkByText("Backgrounds").should("be.visible");
+
     if (page.toLowerCase() === "dashboard") {
       this.clickLink("Backgrounds");
       this.checkURL("dashboard");

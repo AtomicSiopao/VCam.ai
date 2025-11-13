@@ -5,12 +5,20 @@ const logo = require("../pageObjects/components/logo");
 const nametag = require("../pageObjects/components/nametag");
 const settings = require("../pageObjects/components/settings");
 const team = require("../pageObjects/components/team");
+const onboarding = require("../pageObjects/pages/onboardingPage");
 
 describe("VCam.ai Dashboard", () => {
   beforeEach(() => {
     dashboard.visit();
     login.login();
     cy.ignoreReactError();
+    // Handle onboarding if it appears
+    cy.get("body").then(($body) => {
+      if ($body.find('button:contains("For Personal Use")').length) {
+        onboarding.selectPersonalUse();
+      }
+    });
+    background.header.should("be.visible");
   });
 
   describe("DASHBOARD NAVIGATION", () => {
@@ -71,7 +79,7 @@ describe("VCam.ai Dashboard", () => {
       dashboard.navigateTo("Name Tags");
     });
 
-    it.only("Should setup a Name Tag", () => {
+    it("Should setup a Name Tag", () => {
       cy.fixture("users.json")
         .as("users")
         .then((user) => {
@@ -92,7 +100,9 @@ describe("VCam.ai Dashboard", () => {
     });
 
     it("Should set new workspace name", () => {
-      settings.renameWorkspace("Workspace ni Kopi");
+      cy.fixture("workspace.json").then((workspace) => {
+        settings.renameWorkspace(workspace.name);
+      });
     });
 
     it("Should leave workspace if account has more than 1 workspace", () => {
