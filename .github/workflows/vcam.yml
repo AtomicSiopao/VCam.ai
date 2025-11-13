@@ -21,14 +21,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Create Cypress environment file
-        run: |
-          echo '{
-            "credentials": {
-              "email": "test@example.com",
-              "password": "password"
-            }
-          }' > cypress.env.json
-
       - name: Run Cypress tests
         run: npx cypress run
+        env:
+          DASHBOARD_URL: ${{ secrets.DASHBOARD_URL }}
+          VCAM_EMAIL: ${{ secrets.VCAM_EMAIL }}
+          VCAM_PASSWORD: ${{ secrets.VCAM_PASSWORD }}
+          WORKSPACE_NAME: ${{ secrets.WORKSPACE_NAME }}

@@ -1,3 +1,4 @@
+require('dotenv').config();
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
@@ -15,5 +16,12 @@ module.exports = defineConfig({
     specPattern: "./cypress/e2e/*.spec.js",
     viewportWidth: 1280,
     viewportHeight: 720,
+    env: {
+      credentials: {
+        email: process.env.VCAM_EMAIL,
+        password: process.env.VCAM_PASSWORD,
+        baseUrl: process.env.DASHBOARD_URL,
+      },
+    },
   },
 });
