@@ -56,12 +56,13 @@ class Settings {
 
   renameWorkspace() {
     cy.intercept("POST", "**/v1/organizations/*").as("renameWorkspace");
+
     cy.fixture("workspace.json")
-      .as("workspace")
       .then((workspace) => {
         this.workspaceNameField.focus().clear().type(workspace.name);
+        this.saveButton.click();
       });
-    this.saveButton.click();
+
     cy.wait("@renameWorkspace").its("response.statusCode").should("eq", 200);
   }
 

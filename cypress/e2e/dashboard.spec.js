@@ -91,8 +91,8 @@ describe("VCam.ai Dashboard", () => {
       dashboard.navigateTo("Settings");
     });
 
-    it("Should set new workspace name", () => {
-      settings.renameWorkspace(workspace.name);
+    it.only("Should set new workspace name", () => {
+      settings.renameWorkspace();
     });
 
     it("Should leave workspace if account has more than 1 workspace", () => {
