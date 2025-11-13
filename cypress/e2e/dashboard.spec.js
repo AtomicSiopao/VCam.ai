@@ -5,12 +5,20 @@ const logo = require("../pageObjects/components/logo");
 const nametag = require("../pageObjects/components/nametag");
 const settings = require("../pageObjects/components/settings");
 const team = require("../pageObjects/components/team");
+const onboarding = require("../pageObjects/pages/onboardingPage");
 
 describe("VCam.ai Dashboard", () => {
   beforeEach(() => {
     dashboard.visit();
     login.login();
     cy.ignoreReactError();
+    // Handle onboarding if it appears
+    cy.get("body").then(($body) => {
+      if ($body.find('button:contains("For Personal Use")').length) {
+        onboarding.selectPersonalUse();
+      }
+    });
+    background.header.should("be.visible");
   });
 
   describe("DASHBOARD NAVIGATION", () => {

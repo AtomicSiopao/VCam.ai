@@ -1,0 +1,129 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2025-11-13T10:34:22.184Z",
+    "end": "2025-11-13T10:34:28.570Z",
+    "duration": 6386,
+    "testsRegistered": 2,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 1,
+    "hasSkipped": true
+  },
+  "results": [
+    {
+      "uuid": "3207890c-24cc-4828-b8a8-8b3d06f868cf",
+      "title": "",
+      "fullFile": "cypress/e2e/onboarding.spec.js",
+      "file": "cypress/e2e/onboarding.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "c6dc1f12-de8c-4b35-8c6e-99ede4a42cd7",
+          "title": "VCam.ai Dashboard",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Should select 'For Personal Use' on the onboarding page",
+              "fullTitle": "VCam.ai Dashboard Should select 'For Personal Use' on the onboarding page",
+              "timedOut": null,
+              "duration": 2279,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "onboarding.setForPersonalUse();\n// CLEAN UP",
+              "err": {
+                "message": "CypressError: `cy.type()` can only accept a string or number. You passed in: `undefined`\n\nhttps://on.cypress.io/type\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `VCam.ai Dashboard`",
+                "estack": "CypressError: `cy.type()` can only accept a string or number. You passed in: `undefined`\n\nhttps://on.cypress.io/type\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `VCam.ai Dashboard`\n    at Context.type (https://dashboard.vcam.ai/__cypress/runner/cypress_runner.js:117091:68)\n    at wrapped (https://dashboard.vcam.ai/__cypress/runner/cypress_runner.js:145681:19)\nFrom Your Spec Code:\n    at Object.proxyGetter [as get] (https://dashboard.vcam.ai/__cypress/runner/cypress_runner.js:80741:22)\n    at exists (https://dashboard.vcam.ai/__cypress/runner/cypress_runner.js:150544:26)\n    at elExists (https://dashboard.vcam.ai/__cypress/runner/cypress_runner.js:150559:10)\n    at ensureExistence (https://dashboard.vcam.ai/__cypress/runner/cypress_runner.js:150740:22)\n    at onFailFn (https://dashboard.vcam.ai/__cypress/runner/cypress_runner.js:150769:53)",
+                "diff": null
+              },
+              "uuid": "e4056a39-78db-4f4c-9c5a-b52a55859680",
+              "parentUUID": "c6dc1f12-de8c-4b35-8c6e-99ede4a42cd7",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Should select 'for Team Use' on the onboarding page",
+              "fullTitle": "VCam.ai Dashboard Should select 'for Team Use' on the onboarding page",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "onboarding.setForTeamUse();\nonboarding.setupTeamWorkspace();\ndashboard.navigateTo(\"Settings\");\ncy.fixture(\"workspace.json\").as(\"workspace\").then(workspace => {\n  const wsName = workspace.name;\n  settings.workspaceName.should(\"eq\", wsName);\n});",
+              "err": {},
+              "uuid": "3c60cf87-7803-4d83-bca8-c7482f73f08d",
+              "parentUUID": "c6dc1f12-de8c-4b35-8c6e-99ede4a42cd7",
+              "isHook": false,
+              "skipped": true
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "e4056a39-78db-4f4c-9c5a-b52a55859680"
+          ],
+          "pending": [],
+          "skipped": [
+            "3c60cf87-7803-4d83-bca8-c7482f73f08d"
+          ],
+          "duration": 2279,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}

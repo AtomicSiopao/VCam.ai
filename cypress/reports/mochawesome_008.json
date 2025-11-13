@@ -1,0 +1,129 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2025-11-13T10:35:33.570Z",
+    "end": "2025-11-13T10:35:52.309Z",
+    "duration": 18739,
+    "testsRegistered": 2,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 1,
+    "hasSkipped": true
+  },
+  "results": [
+    {
+      "uuid": "61d86838-9e75-4eb0-9e3f-06faee40e212",
+      "title": "",
+      "fullFile": "cypress/e2e/onboarding.spec.js",
+      "file": "cypress/e2e/onboarding.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "b7079a1e-cd6a-42da-a8db-53a24ce70530",
+          "title": "VCam.ai Dashboard",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Should select 'For Personal Use' on the onboarding page",
+              "fullTitle": "VCam.ai Dashboard Should select 'For Personal Use' on the onboarding page",
+              "timedOut": null,
+              "duration": 15856,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "onboarding.setForPersonalUse();\n// CLEAN UP",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 10000ms: Expected to find content: 'Settings' within the selector: 'a' but never did.\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `VCam.ai Dashboard`",
+                "estack": "AssertionError: Timed out retrying after 10000ms: Expected to find content: 'Settings' within the selector: 'a' but never did.\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `VCam.ai Dashboard`\n    at DashboardPage.getLinkByText (webpack://thelab/./cypress/pageObjects/pages/dashboardPage.js:34:14)\n    at DashboardPage.clickLink (webpack://thelab/./cypress/pageObjects/pages/dashboardPage.js:38:9)\n    at DashboardPage.navigateTo (webpack://thelab/./cypress/pageObjects/pages/dashboardPage.js:60:11)\n    at Context.eval (webpack://thelab/./cypress/e2e/onboarding.spec.js:12:14)",
+                "diff": null
+              },
+              "uuid": "0914e071-9957-4a99-847e-54763b59a1e3",
+              "parentUUID": "b7079a1e-cd6a-42da-a8db-53a24ce70530",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Should select 'for Team Use' on the onboarding page",
+              "fullTitle": "VCam.ai Dashboard Should select 'for Team Use' on the onboarding page",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "onboarding.setForTeamUse();\nonboarding.setupTeamWorkspace();\ndashboard.navigateTo(\"Settings\");\ncy.fixture(\"workspace.json\").as(\"workspace\").then(workspace => {\n  const wsName = workspace.name;\n  settings.workspaceName.should(\"eq\", wsName);\n});",
+              "err": {},
+              "uuid": "01ec5df5-1469-438c-b272-f69e9892e6ba",
+              "parentUUID": "b7079a1e-cd6a-42da-a8db-53a24ce70530",
+              "isHook": false,
+              "skipped": true
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "0914e071-9957-4a99-847e-54763b59a1e3"
+          ],
+          "pending": [],
+          "skipped": [
+            "01ec5df5-1469-438c-b272-f69e9892e6ba"
+          ],
+          "duration": 15856,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}
