@@ -13,13 +13,17 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: "20"
 
       - name: Install xvfb
         run: sudo apt-get update && sudo apt-get install -y xvfb
 
       - name: Install dependencies
         run: npm install
+
+      - name: Clear old reports
+        run: |
+          rm -rf cypress/reports mochawesome-report || true
 
       - name: Run Cypress tests
         run: npx cypress run
@@ -28,3 +32,9 @@ jobs:
           VCAM_EMAIL: ${{ secrets.VCAM_EMAIL }}
           VCAM_PASSWORD: ${{ secrets.VCAM_PASSWORD }}
           WORKSPACE_NAME: ${{ secrets.WORKSPACE_NAME }}
+
+      - name: Merge Mochawesome reports
+        run: pnpm mochawesome-merge cypress/reports/*.json > cypress/reports/report.json
+
+      - name: Generate final HTML report
+        run: pnpm marge cypress/reports/report.json --reportDir cypress/reports --inline
