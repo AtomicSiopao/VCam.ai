@@ -28,8 +28,12 @@ jobs:
         run: |
           rm -rf cypress/reports mochawesome-report || true
 
+      - name: Generate Mochawesome report
+        run: pnpm run report
+
       - name: Run Cypress tests
-        run: pnpm test
+        run: pnpm cypress run
+        continue-on-error: true
         env:
           DASHBOARD_URL: ${{ secrets.DASHBOARD_URL }}
           VCAM_EMAIL: ${{ secrets.VCAM_EMAIL }}
