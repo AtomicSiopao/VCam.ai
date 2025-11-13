@@ -9,7 +9,9 @@ module.exports = defineConfig({
     html: false,
     json: true,
   },
+  numTestsKeptInMemory: 5,
   e2e: {
+    experimentalMemoryManagement: true,
     chromeWebSecurity: false,
     baseUrl: "https://vcam.ai/",
     video: false,
