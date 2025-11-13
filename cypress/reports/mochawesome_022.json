@@ -1,0 +1,143 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 3,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-11-13T12:24:57.396Z",
+    "end": "2025-11-13T12:25:11.414Z",
+    "duration": 14018,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "b987344e-0020-4ddf-a616-d833f2698d64",
+      "title": "",
+      "fullFile": "cypress/e2e/home.spec.js",
+      "file": "cypress/e2e/home.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "86418875-ec68-4072-a918-a823d2339727",
+          "title": "VCam.ai Home Page",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Should check that all the URLs in the header are correct",
+              "fullTitle": "VCam.ai Home Page Should check that all the URLs in the header are correct",
+              "timedOut": null,
+              "duration": 6497,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "header.checkHeaderLinks();",
+              "err": {},
+              "uuid": "950d670c-e40e-4566-8cc2-3dbf2b8132a7",
+              "parentUUID": "86418875-ec68-4072-a918-a823d2339727",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Should check that all the URLs in the footer are correct",
+              "fullTitle": "VCam.ai Home Page Should check that all the URLs in the footer are correct",
+              "timedOut": null,
+              "duration": 3964,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "footer.checkFooterLinks();",
+              "err": {},
+              "uuid": "badbbc08-b629-43bb-926f-a43d2b557466",
+              "parentUUID": "86418875-ec68-4072-a918-a823d2339727",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Should check all URLs in the Home Page are correct",
+              "fullTitle": "VCam.ai Home Page Should check all URLs in the Home Page are correct",
+              "timedOut": null,
+              "duration": 929,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "homePage.checkHomePageLinks();",
+              "err": {},
+              "uuid": "6a5b4c4e-0bd3-4c0f-92c7-11981e42ea4b",
+              "parentUUID": "86418875-ec68-4072-a918-a823d2339727",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "950d670c-e40e-4566-8cc2-3dbf2b8132a7",
+            "badbbc08-b629-43bb-926f-a43d2b557466",
+            "6a5b4c4e-0bd3-4c0f-92c7-11981e42ea4b"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 11390,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}

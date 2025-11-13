@@ -1,0 +1,128 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2025-11-13T12:13:53.859Z",
+    "end": "2025-11-13T12:14:13.098Z",
+    "duration": 19239,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "47ccd0b7-1cbd-4d38-91a1-bf9758183cc4",
+      "title": "",
+      "fullFile": "cypress/e2e/dashboard.spec.js",
+      "file": "cypress/e2e/dashboard.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "ae7c9715-1b49-46fb-a571-fa16da479755",
+          "title": "VCam.ai Dashboard",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [],
+          "suites": [
+            {
+              "uuid": "760048a3-ffa2-4020-ac98-34141b7159a3",
+              "title": "NAME TAGS",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "Should setup a Name Tag",
+                  "fullTitle": "VCam.ai Dashboard NAME TAGS Should setup a Name Tag",
+                  "timedOut": null,
+                  "duration": 15131,
+                  "state": "failed",
+                  "speed": null,
+                  "pass": false,
+                  "fail": true,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.fixture(\"users.json\").as(\"users\").then(user => {\n  nametag.selectNameTagDesign(2);\n  nametag.setNameTag(user[1].name, user[1].nametag);\n  nametag.allowNameTagsInApp(1); // 1 to enable\n  nametag.allowMembersToToggleNameTag(0);\n  nametag.allowMembersToSetDetails(0);\n  nametag.allowMembersToSetDesign(0);\n  nametag.selectNameTagDesign(0); //Cleanup. Set to default design again.\n});",
+                  "err": {
+                    "message": "AssertionError: Timed out retrying after 10000ms: expected '[ <h1.text-4xl.font-bold.tracking-tight.text-gray-900.dark:text-white>, 1 more... ]' to contain 'Dashboard'\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `VCam.ai Dashboard`",
+                    "estack": "AssertionError: Timed out retrying after 10000ms: expected '[ <h1.text-4xl.font-bold.tracking-tight.text-gray-900.dark:text-white>, 1 more... ]' to contain 'Dashboard'\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `VCam.ai Dashboard`\n    at get header (webpack://thelab/./cypress/pageObjects/pages/dashboardPage.js:4:44)\n    at Context.eval (webpack://thelab/./cypress/e2e/dashboard.spec.js:13:14)",
+                    "diff": null
+                  },
+                  "uuid": "e236ceca-c6c8-46b9-9e34-b42b1ca10b1a",
+                  "parentUUID": "760048a3-ffa2-4020-ac98-34141b7159a3",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [],
+              "failures": [
+                "e236ceca-c6c8-46b9-9e34-b42b1ca10b1a"
+              ],
+              "pending": [],
+              "skipped": [],
+              "duration": 15131,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            }
+          ],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}

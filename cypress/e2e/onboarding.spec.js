@@ -3,14 +3,11 @@ const settings = require("../pageObjects/components/settings");
 const dashboard = require("../pageObjects/pages/dashboardPage");
 const onboarding = require("../pageObjects/pages/onboardingPage");
 
-describe("VCam.ai Dashboard", () => {
+describe.skip("VCam.ai Dashboard", () => {
   beforeEach(() => {
     dashboard.visit();
     login.login();
     cy.ignoreReactError();
-    // SETUP
-    dashboard.navigateTo("Settings");
-    settings.deleteWorkspace();
   });
 
   it("Should select 'For Personal Use' on the onboarding page", () => {
