@@ -71,12 +71,12 @@ describe("VCam.ai Dashboard", () => {
       dashboard.navigateTo("Name Tags");
     });
 
-    it("Should setup a Name Tag", () => {
+    it.only("Should setup a Name Tag", () => {
       cy.fixture("users.json")
         .as("users")
         .then((user) => {
           nametag.selectNameTagDesign(2);
-          nametag.setNameTag(user[0].name, user[0].nametag);
+          nametag.setNameTag(user[1].name, user[1].nametag);
           nametag.allowNameTagsInApp(1); // 1 to enable
           nametag.allowMembersToToggleNameTag(0);
           nametag.allowMembersToSetDetails(0);
