@@ -29,16 +29,16 @@ class Settings {
     return cy.getButtonByText("Add domain");
   }
 
-  get verificationEmailField(){
+  get verificationEmailField() {
     return cy.get('input[name="emailAddress"]');
   }
 
   get addDomainButtonOnModal() {
     //return cy.get('button[type="submit"]');
-    return cy.getButtonByText('Cancel').siblings('button');
+    return cy.getButtonByText("Cancel").siblings("button");
   }
 
-  get domainField(){
+  get domainField() {
     return cy.get('input[name="domain"]');
   }
 
@@ -50,14 +50,19 @@ class Settings {
     return cy.getButtonByText("Cancel");
   }
 
-  setDomainDiscovery(type){
+  setDomainDiscovery(type) {
     cy.getButtonByText(type).click();
   }
 
-  renameWorkspace(name) {
-    cy.intercept("PATCH", "**/api/rest/v1/workspaces/*").as("renameWorkspace");
-    this.workspaceNameField.clear().type(name);
-    this.saveButton.click();
+  renameWorkspace() {
+    cy.intercept("POST", "**/v1/organizations/*").as("renameWorkspace");
+
+    cy.fixture("workspace.json")
+      .then((workspace) => {
+        this.workspaceNameField.focus().clear().type(workspace.name);
+        this.saveButton.click();
+      });
+
     cy.wait("@renameWorkspace").its("response.statusCode").should("eq", 200);
   }
 
@@ -71,7 +76,7 @@ class Settings {
     return this;
   }
 
-  addDomain(domain, type, verificationEmail){ 
+  addDomain(domain, type, verificationEmail) {
     this.addDomainButton.click();
     this.domainField.clear().type(domain);
     this.setDomainDiscovery(type);
