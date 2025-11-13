@@ -20,7 +20,7 @@ jobs:
 
       - name: Install pnpm
         run: npm install -g pnpm
-        
+
       - name: Install dependencies
         run: pnpm install
 
@@ -29,7 +29,7 @@ jobs:
           rm -rf cypress/reports mochawesome-report || true
 
       - name: Run Cypress tests
-        run: npx cypress run
+        run: pnpm test
         env:
           DASHBOARD_URL: ${{ secrets.DASHBOARD_URL }}
           VCAM_EMAIL: ${{ secrets.VCAM_EMAIL }}
