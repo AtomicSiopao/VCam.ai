@@ -7,7 +7,7 @@ module.exports = defineConfig({
     reportDir: "cypress/reports", // where reports are saved
     overwrite: false,
     html: true,
-    json: false,
+    json: true,
   },
   numTestsKeptInMemory: 5,
   e2e: {

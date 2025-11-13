@@ -12,6 +12,13 @@ describe("VCam.ai Dashboard", () => {
     dashboard.visit();
     login.login();
     cy.ignoreReactError();
+    // Handle onboarding if it appears
+    cy.get("body").then(($body) => {
+      if ($body.find('button:contains("For Personal Use")').length) {
+        onboarding.selectPersonalUse();
+      }
+    });
+    background.header.should("be.visible");
   });
 
   describe("DASHBOARD NAVIGATION", () => {

@@ -28,6 +28,15 @@ jobs:
         run: |
           rm -rf cypress/reports mochawesome-report || true
 
+      - name: Create cypress.env.json
+        run: |
+          echo '{
+            "credentials": {
+              "email": "${{ secrets.VCAM_EMAIL }}",
+              "password": "${{ secrets.VCAM_PASSWORD }}"
+            }
+          }' > cypress.env.json
+
       - name: Run Cypress tests
         shell: bash
         run: pnpm cypress run || true
