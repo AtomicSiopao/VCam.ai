@@ -72,13 +72,17 @@ describe("VCam.ai Dashboard", () => {
     });
 
     it("Should setup a Name Tag", () => {
-      nametag.selectNameTagDesign(2);
-      nametag.setNameTag("KopiBoi", "Resident Sleeper");
-      nametag.allowNameTagsInApp(0); // 1 to enable
-      nametag.allowMembersToToggleNameTag(0);
-      nametag.allowMembersToSetDetails(0);
-      nametag.allowMembersToSetDesign(0);
-      nametag.selectNameTagDesign(0); //Cleanup. Set to default design again.
+      cy.fixture("users.json")
+        .as("users")
+        .then((user) => {
+          nametag.selectNameTagDesign(2);
+          nametag.setNameTag(user[0].name, user[0].nametag);
+          nametag.allowNameTagsInApp(1); // 1 to enable
+          nametag.allowMembersToToggleNameTag(0);
+          nametag.allowMembersToSetDetails(0);
+          nametag.allowMembersToSetDesign(0);
+          nametag.selectNameTagDesign(0); //Cleanup. Set to default design again.
+        });
     });
   });
 
@@ -95,11 +99,12 @@ describe("VCam.ai Dashboard", () => {
       settings.leaveWorkspace();
     });
 
-    it("Should delete workspace if account has more than 1 workspace", () => {
+    it.skip("[SKIP] Should delete workspace if account has more than 1 workspace", () => {
+      // CURRENTLY SKIPPED DUE TO NUMBER OF WORKSPACES AVAILABLE IN TEST ACCOUNT
       settings.deleteWorkspace();
     });
 
-    it.skip("SKIP: Domain and Workspace Discovery - Current LIMITATION", () => {
+    it.skip("[SKIP] Domain and Workspace Discovery - Current LIMITATION", () => {
       // Workspace Discovery cannot be tested via automation
       const domain = "marco.com";
       const verificationEmail = "kopi@marco.com";
@@ -113,13 +118,6 @@ describe("VCam.ai Dashboard", () => {
     });
 
     it.skip("[SKIP] Should invite Users/Team Members via the Team Menu", () => {
-      const emails = [
-        "test@tesuto.com",
-        "test2@tesuto.com",
-        "test3@tesuto.com",
-        //"test4@test.com",
-        //"test5@test.com",
-      ];
       team.inviteUsers(emails, "Member");
     });
   });

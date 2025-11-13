@@ -1,0 +1,434 @@
+{
+  "stats": {
+    "suites": 7,
+    "tests": 11,
+    "passes": 9,
+    "pending": 3,
+    "failures": -1,
+    "start": "2025-11-13T09:42:45.648Z",
+    "end": "2025-11-13T09:45:38.813Z",
+    "duration": 173165,
+    "testsRegistered": 12,
+    "passPercent": 100,
+    "pendingPercent": 25,
+    "other": 1,
+    "hasOther": true,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "3f48b178-9580-46a3-b725-389b79da489a",
+      "title": "",
+      "fullFile": "cypress\\e2e\\dashboard.spec.js",
+      "file": "cypress\\e2e\\dashboard.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "5d19916d-b217-4559-9787-126b0e10a1a3",
+          "title": "VCam.ai Dashboard",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [],
+          "suites": [
+            {
+              "uuid": "875cff87-1684-4719-96ae-77c78c7f1b3d",
+              "title": "DASHBOARD NAVIGATION",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "Should check navigation in the Dashboard while logged in",
+                  "fullTitle": "VCam.ai Dashboard DASHBOARD NAVIGATION Should check navigation in the Dashboard while logged in",
+                  "timedOut": null,
+                  "duration": 18442,
+                  "state": "passed",
+                  "speed": "slow",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "dashboard.navigateTo(\"Dashboard\");\ndashboard.navigateTo(\"Backgrounds\");\ndashboard.navigateTo(\"Logos\");\ndashboard.navigateTo(\"Name Tags\");\ndashboard.navigateTo(\"Team\");\ndashboard.navigateTo(\"Billing\");\ndashboard.navigateToBillingFromDashboard();\ndashboard.navigateTo(\"Settings\");",
+                  "err": {},
+                  "uuid": "3bace09a-128e-4869-aba4-acc68e7e3e8f",
+                  "parentUUID": "875cff87-1684-4719-96ae-77c78c7f1b3d",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "3bace09a-128e-4869-aba4-acc68e7e3e8f"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 18442,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "9de957e3-e509-4982-b03e-fd43b6698c1c",
+              "title": "BACKGROUNDS",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "Should upload image file as background then remove all backgrounds",
+                  "fullTitle": "VCam.ai Dashboard BACKGROUNDS Should upload image file as background then remove all backgrounds",
+                  "timedOut": null,
+                  "duration": 20545,
+                  "state": "passed",
+                  "speed": "slow",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "background.addBackground(\"image\");\nbackground.deleteBackground(); // cleanup",
+                  "err": {},
+                  "uuid": "bc38f2ec-4802-442b-80a3-537ce34eb5c4",
+                  "parentUUID": "9de957e3-e509-4982-b03e-fd43b6698c1c",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "Should upload video file as background",
+                  "fullTitle": "VCam.ai Dashboard BACKGROUNDS Should upload video file as background",
+                  "timedOut": null,
+                  "duration": 20523,
+                  "state": "passed",
+                  "speed": "slow",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "background.addBackground(\"video\");\nbackground.deleteBackground(); // cleanup",
+                  "err": {},
+                  "uuid": "c67eacbe-173e-475a-8155-95f46eccd7bd",
+                  "parentUUID": "9de957e3-e509-4982-b03e-fd43b6698c1c",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "Should select a stock photo as background",
+                  "fullTitle": "VCam.ai Dashboard BACKGROUNDS Should select a stock photo as background",
+                  "timedOut": null,
+                  "duration": 18604,
+                  "state": "passed",
+                  "speed": "slow",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "background.addBackground(\"stock\");\nbackground.setBackgroundStateMemberSettings(1);\nbackground.setBackgroundPermissionSettings(0);\nbackground.deleteBackground(); // cleanup",
+                  "err": {},
+                  "uuid": "20d07a6b-6a9d-4b18-80cc-300f3bac92a4",
+                  "parentUUID": "9de957e3-e509-4982-b03e-fd43b6698c1c",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "bc38f2ec-4802-442b-80a3-537ce34eb5c4",
+                "c67eacbe-173e-475a-8155-95f46eccd7bd",
+                "20d07a6b-6a9d-4b18-80cc-300f3bac92a4"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 59672,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "40452eb1-aecc-47de-83ed-0a643742d540",
+              "title": "LOGOS",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "Should upload image file as logo",
+                  "fullTitle": "VCam.ai Dashboard LOGOS Should upload image file as logo",
+                  "timedOut": null,
+                  "duration": 19995,
+                  "state": "passed",
+                  "speed": "slow",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "logo.addLogoByImageUpload();\nlogo.deleteLogo(); // cleanup",
+                  "err": {},
+                  "uuid": "f9631b96-a926-4b37-af58-c61ed6579aca",
+                  "parentUUID": "40452eb1-aecc-47de-83ed-0a643742d540",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "Should upload video file as logo",
+                  "fullTitle": "VCam.ai Dashboard LOGOS Should upload video file as logo",
+                  "timedOut": null,
+                  "duration": 21415,
+                  "state": "passed",
+                  "speed": "slow",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "logo.addLogoByVideoUpload();\nlogo.setLogoPermissionSettings(1);\nlogo.deleteLogo(); // cleanup",
+                  "err": {},
+                  "uuid": "c5b27a22-f3ca-492c-9559-1b1ff80d5d7f",
+                  "parentUUID": "40452eb1-aecc-47de-83ed-0a643742d540",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "f9631b96-a926-4b37-af58-c61ed6579aca",
+                "c5b27a22-f3ca-492c-9559-1b1ff80d5d7f"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 41410,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "ff02b5b4-2676-458e-a6d6-561cfb1c3a2d",
+              "title": "NAME TAGS",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "Should setup a Name Tag",
+                  "fullTitle": "VCam.ai Dashboard NAME TAGS Should setup a Name Tag",
+                  "timedOut": null,
+                  "duration": 17670,
+                  "state": "passed",
+                  "speed": "slow",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.fixture(\"users.json\").as(\"users\").then(user => {\n  nametag.selectNameTagDesign(2);\n  nametag.setNameTag(user[0].name, user[0].nametag);\n  nametag.allowNameTagsInApp(1); // 1 to enable\n  nametag.allowMembersToToggleNameTag(0);\n  nametag.allowMembersToSetDetails(0);\n  nametag.allowMembersToSetDesign(0);\n  nametag.selectNameTagDesign(0); //Cleanup. Set to default design again.\n});",
+                  "err": {},
+                  "uuid": "37442489-2047-47ea-b115-52982045de34",
+                  "parentUUID": "ff02b5b4-2676-458e-a6d6-561cfb1c3a2d",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "37442489-2047-47ea-b115-52982045de34"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 17670,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "046a85ff-ed5f-4bbd-aa87-09bb72a91a69",
+              "title": "SETTINGS",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "Should set new workspace name",
+                  "fullTitle": "VCam.ai Dashboard SETTINGS Should set new workspace name",
+                  "timedOut": null,
+                  "duration": 19893,
+                  "state": "passed",
+                  "speed": "slow",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "settings.renameWorkspace(\"Workspace ni Kopi\");",
+                  "err": {},
+                  "uuid": "6ef9dfeb-33f3-478d-97de-9bdcdf196d32",
+                  "parentUUID": "046a85ff-ed5f-4bbd-aa87-09bb72a91a69",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "Should leave workspace if account has more than 1 workspace",
+                  "fullTitle": "VCam.ai Dashboard SETTINGS Should leave workspace if account has more than 1 workspace",
+                  "timedOut": null,
+                  "duration": 12717,
+                  "state": "passed",
+                  "speed": "slow",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "settings.leaveWorkspace();",
+                  "err": {},
+                  "uuid": "f65abecc-d72e-4632-b16f-8d77a802b276",
+                  "parentUUID": "046a85ff-ed5f-4bbd-aa87-09bb72a91a69",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "[SKIP] Should delete workspace if account has more than 1 workspace",
+                  "fullTitle": "VCam.ai Dashboard SETTINGS [SKIP] Should delete workspace if account has more than 1 workspace",
+                  "timedOut": null,
+                  "duration": 0,
+                  "state": "pending",
+                  "speed": null,
+                  "pass": false,
+                  "fail": false,
+                  "pending": true,
+                  "context": null,
+                  "code": "settings.deleteWorkspace();",
+                  "err": {},
+                  "uuid": "5a64be6b-819e-403c-97eb-27106bda1603",
+                  "parentUUID": "046a85ff-ed5f-4bbd-aa87-09bb72a91a69",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "[SKIP] Domain and Workspace Discovery - Current LIMITATION",
+                  "fullTitle": "VCam.ai Dashboard SETTINGS [SKIP] Domain and Workspace Discovery - Current LIMITATION",
+                  "timedOut": null,
+                  "duration": 0,
+                  "state": "pending",
+                  "speed": null,
+                  "pass": false,
+                  "fail": false,
+                  "pending": true,
+                  "context": null,
+                  "code": "// Workspace Discovery cannot be tested via automation\nconst domain = \"marco.com\";\nconst verificationEmail = \"kopi@marco.com\";\nsettings.addDomain(domain, \"Invite only\", verificationEmail); // type: Instant Access, Request to join, Invite only",
+                  "err": {},
+                  "uuid": "087caa12-1645-4d63-b9c8-4beb860d7f24",
+                  "parentUUID": "046a85ff-ed5f-4bbd-aa87-09bb72a91a69",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "6ef9dfeb-33f3-478d-97de-9bdcdf196d32",
+                "f65abecc-d72e-4632-b16f-8d77a802b276"
+              ],
+              "failures": [],
+              "pending": [
+                "5a64be6b-819e-403c-97eb-27106bda1603",
+                "087caa12-1645-4d63-b9c8-4beb860d7f24"
+              ],
+              "skipped": [],
+              "duration": 32610,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "864cf1cf-f313-483c-9e4f-d815e4f7aaee",
+              "title": "TEAM",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "[SKIP] Should invite Users/Team Members via the Team Menu",
+                  "fullTitle": "VCam.ai Dashboard TEAM [SKIP] Should invite Users/Team Members via the Team Menu",
+                  "timedOut": null,
+                  "duration": 0,
+                  "state": "pending",
+                  "speed": null,
+                  "pass": false,
+                  "fail": false,
+                  "pending": true,
+                  "context": null,
+                  "code": "team.inviteUsers(emails, \"Member\");",
+                  "err": {},
+                  "uuid": "f42e643d-fd2e-4cd8-8083-a6c3c31c91a3",
+                  "parentUUID": "864cf1cf-f313-483c-9e4f-d815e4f7aaee",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [],
+              "failures": [],
+              "pending": [
+                "f42e643d-fd2e-4cd8-8083-a6c3c31c91a3"
+              ],
+              "skipped": [],
+              "duration": 0,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            }
+          ],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}

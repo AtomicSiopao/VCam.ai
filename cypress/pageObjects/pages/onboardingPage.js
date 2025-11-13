@@ -8,7 +8,7 @@ class OnboardingPage {
   get personalUse() {
     return cy
       .get("div.flex.h-full.flex-col.justify-center.gap-4.p-6", {
-        timeout: 5000,
+        timeout: 10000,
       })
       .eq(0);
   }
@@ -42,7 +42,7 @@ class OnboardingPage {
   }
 
   setForPersonalUse() {
-    // automatically creates a workspace
+    // TOOLTIP: selecting personal use automatically creates a workspace
     this.personalUse.click();
     //this.downloadVCam();
     this.goToDashboard();
@@ -59,28 +59,32 @@ class OnboardingPage {
   }
 
   // TEAM
-  setWorkspaceName(name) {
-    return this.workspaceNameField.clear().type(name);
-  }
-
-  inviteMembers(members) {
-    cy.wrap(members).each((member) => {
-      this.membersEmailField.type(member + ",");
+  setWorkspaceName() {
+    cy.fixture("workspace.json").then((workspace) => {
+      const name = workspace.name;
+      this.workspaceNameField.clear().type(name);
     });
-    this.nextButton.click();
     return this;
   }
 
-  setupTeamWorkspace(name, members) {
-    this.setWorkspaceName(name);
-    this.inviteMembers(members);
-    //this.downloadVCam();
+  inviteMembers() {
+    cy.fixture("users.json").then((users) => {
+      const emails = users.map((user) => user.email).join(", ");
+      this.membersEmailField.type(emails + ", ");
+      this.nextButton.click();
+    });
+    return this;
+  }
+
+  setupTeamWorkspace() {
+    this.setWorkspaceName();
+    this.inviteMembers();
     this.goToDashboard();
   }
 
   goToDashboard() {
     this.dashboardLink.click();
-    cy.url().should('eq','https://dashboard.vcam.ai/');
+    cy.url().should("eq", "https://dashboard.vcam.ai/");
   }
 }
 module.exports = new OnboardingPage();

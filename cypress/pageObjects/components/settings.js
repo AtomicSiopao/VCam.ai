@@ -68,6 +68,7 @@ class Settings {
       this.workspaceNameField.last().type(name);
       this.cancelButton.siblings("button").click();
     });
+    return this;
   }
 
   addDomain(domain, type, verificationEmail){ 

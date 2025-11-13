@@ -1,5 +1,5 @@
-const footer = require("../pageObjects/components/footer");
 const header = require("../pageObjects/components/header");
+const footer = require("../pageObjects/components/footer");
 const homePage = require("../pageObjects/pages/homePage");
 
 describe("VCam.ai Home Page", () => {

@@ -54,7 +54,7 @@ class Login {
 
   login() {
     this.inputEmailAddress().clickContinue();
-    cy.wait(3000);
+    cy.wait(1500);
     this.inputPassword().clickContinue();
   }
 }
