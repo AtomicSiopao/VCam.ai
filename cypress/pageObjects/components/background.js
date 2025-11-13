@@ -201,7 +201,6 @@ class BackgroundPage {
           throw new Error(`Invalid background type: ${type}`);
       }
 
-      cy.wait(7000);
       return this.waitForUploadCompletion(beforeCount);
     });
   }

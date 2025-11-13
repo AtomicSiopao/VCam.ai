@@ -55,10 +55,10 @@ class Settings {
   }
 
   renameWorkspace(name) {
-    cy.wait(3000);
-    this.workspaceNameField.clear().wait(1000).type(name);
-    cy.wait(1500);
+    cy.intercept("PATCH", "**/api/rest/v1/workspaces/*").as("renameWorkspace");
+    this.workspaceNameField.clear().type(name);
     this.saveButton.click();
+    cy.wait("@renameWorkspace").its("response.statusCode").should("eq", 200);
   }
 
   leaveWorkspace() {

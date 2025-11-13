@@ -54,7 +54,7 @@ class Login {
 
   login() {
     this.inputEmailAddress().clickContinue();
-    cy.wait(1500);
+    this.passwordField.should("be.visible");
     this.inputPassword().clickContinue();
   }
 }

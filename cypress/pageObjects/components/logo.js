@@ -154,8 +154,6 @@ class LogoPage {
       this.clickAddLogoButton();
       this.uploadAnImage();
 
-      cy.wait(7000);
-
       return this.waitForUploadCompletion(beforeCount);
     });
   }
@@ -169,7 +167,6 @@ class LogoPage {
 
       this.clickAddLogoButton();
       this.uploadAVideo();
-      cy.wait(7000);
 
       return this.waitForUploadCompletion(beforeCount);
     });
