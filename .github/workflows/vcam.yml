@@ -3,6 +3,9 @@ name: VCam Cypress Tests
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   cypress-tests:
     runs-on: ubuntu-latest
@@ -23,8 +26,7 @@ jobs:
         run: pnpm install
 
       - name: Clear old Cypress reports
-        run: |
-          rm -rf cypress/reports || true
+        run: rm -rf cypress/reports || true
 
       - name: Run Cypress tests (xvfb)
         env:
@@ -46,19 +48,26 @@ jobs:
 
       - name: Merge mochawesome reports
         if: steps.check_reports.outputs.reports_exist == 'true'
-        run: |
-          pnpm mochawesome-merge cypress/reports/**/*.json > cypress/reports/report.json
+        run: pnpm mochawesome-merge cypress/reports/**/*.json > cypress/reports/report.json
 
       - name: Generate final HTML report
         if: steps.check_reports.outputs.reports_exist == 'true'
-        run: |
-          pnpm marge cypress/reports/report.json \
-            --reportDir cypress/reports \
-            --inline
+        run: pnpm marge cypress/reports/report.json --reportDir cypress/reports --inline
 
-      - name: Upload report artifact
+      - name: Prepare public folder for Pages
         if: steps.check_reports.outputs.reports_exist == 'true'
-        uses: actions/upload-artifact@v4
+        run: |
+          mkdir -p public
+          # Copy the merged HTML to index.html so GitHub Pages serves it at the repo root
+          # Adjust the filename if marge produces a different name (e.g., mochawesome.html)
+          cp cypress/reports/*.html public/index.html
+          # Copy any assets (css/js/images) so the report renders properly
+          cp -R cypress/reports/* public/ || true
+
+      - name: Deploy to GitHub Pages
+        if: steps.check_reports.outputs.reports_exist == 'true'
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          name: mochawesome-report
-          path: cypress/reports
+          personal_token: ${{ secrets.GH_PAGES_TOKEN }}
+          publish_dir: ./public
+          publish_branch: gh-pages
