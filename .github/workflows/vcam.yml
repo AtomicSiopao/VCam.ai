@@ -55,12 +55,13 @@ jobs:
         run: pnpm marge cypress/reports/report.json --reportDir cypress/reports --inline
 
       - name: Prepare public folder for Pages
-        if: always()
         run: |
           mkdir -p public
-          if ls cypress/reports/*.html 1> /dev/null 2>&1; then
-            cp cypress/reports/*.html public/index.html
-            cp -R cypress/reports/* public/
+          # Check if HTML exists
+          HTML_FILE=$(ls cypress/reports/*.html 2>/dev/null | head -n1)
+          if [ -n "$HTML_FILE" ]; then
+            cp "$HTML_FILE" public/index.html
+            cp -R cypress/reports/* public/ || true
           else
             echo "<h1>No report generated</h1>" > public/index.html
           fi
