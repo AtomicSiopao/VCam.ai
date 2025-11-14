@@ -55,17 +55,18 @@ jobs:
         run: pnpm marge cypress/reports/report.json --reportDir cypress/reports --inline
 
       - name: Prepare public folder for Pages
-        if: steps.check_reports.outputs.reports_exist == 'true'
+        if: always()
         run: |
           mkdir -p public
-          # Copy the merged HTML to index.html so GitHub Pages serves it at the repo root
-          # Adjust the filename if marge produces a different name (e.g., mochawesome.html)
-          cp cypress/reports/*.html public/index.html
-          # Copy any assets (css/js/images) so the report renders properly
-          cp -R cypress/reports/* public/ || true
+          if ls cypress/reports/*.html 1> /dev/null 2>&1; then
+            cp cypress/reports/*.html public/index.html
+            cp -R cypress/reports/* public/
+          else
+            echo "<h1>No report generated</h1>" > public/index.html
+          fi
 
       - name: Deploy to GitHub Pages
-        if: steps.check_reports.outputs.reports_exist == 'true'
+        if: always()
         uses: peaceiris/actions-gh-pages@v3
         with:
           personal_token: ${{ secrets.GH_PAGES_TOKEN }}
