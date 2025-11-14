@@ -5,9 +5,9 @@
     "passes": 3,
     "pending": 0,
     "failures": 0,
-    "start": "2025-11-14T07:02:34.400Z",
-    "end": "2025-11-14T07:02:40.821Z",
-    "duration": 6421,
+    "start": "2025-11-14T08:22:57.599Z",
+    "end": "2025-11-14T08:23:04.995Z",
+    "duration": 7396,
     "testsRegistered": 3,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "862de545-f2af-4cbe-8e4b-a3047b464d8b",
+      "uuid": "a712d4b5-36f3-4fc5-84e5-36aa40bff419",
       "title": "",
       "fullFile": "cypress/e2e/home.spec.js",
       "file": "cypress/e2e/home.spec.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "f9b8291d-2587-44f1-bf45-9dcddd92eb35",
+          "uuid": "bf7fc4ff-1f5e-4f05-ac0c-76a18f23e4d8",
           "title": "VCam.ai Home Page",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "Should check that all the URLs in the header are correct",
               "fullTitle": "VCam.ai Home Page Should check that all the URLs in the header are correct",
               "timedOut": null,
-              "duration": 1900,
+              "duration": 2807,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -47,8 +47,8 @@
               "context": null,
               "code": "header.checkHeaderLinks();",
               "err": {},
-              "uuid": "e45f728f-39c9-4ba0-8dec-56d93115ab51",
-              "parentUUID": "f9b8291d-2587-44f1-bf45-9dcddd92eb35",
+              "uuid": "c305f29f-db5f-4484-9805-115d81c11737",
+              "parentUUID": "bf7fc4ff-1f5e-4f05-ac0c-76a18f23e4d8",
               "isHook": false,
               "skipped": false
             },
@@ -56,7 +56,7 @@
               "title": "Should check that all the URLs in the footer are correct",
               "fullTitle": "VCam.ai Home Page Should check that all the URLs in the footer are correct",
               "timedOut": null,
-              "duration": 1818,
+              "duration": 1909,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -65,8 +65,8 @@
               "context": null,
               "code": "footer.checkFooterLinks();",
               "err": {},
-              "uuid": "7193af84-a598-4f1e-9b14-67387b04c386",
-              "parentUUID": "f9b8291d-2587-44f1-bf45-9dcddd92eb35",
+              "uuid": "57a75248-f1ab-49f0-96be-8071fb0d0d54",
+              "parentUUID": "bf7fc4ff-1f5e-4f05-ac0c-76a18f23e4d8",
               "isHook": false,
               "skipped": false
             },
@@ -74,7 +74,7 @@
               "title": "Should check all URLs in the Home Page are correct",
               "fullTitle": "VCam.ai Home Page Should check all URLs in the Home Page are correct",
               "timedOut": null,
-              "duration": 522,
+              "duration": 520,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -83,22 +83,22 @@
               "context": null,
               "code": "homePage.checkHomePageLinks();",
               "err": {},
-              "uuid": "b3e69f66-96a1-488b-a3c6-4cbb286db8d8",
-              "parentUUID": "f9b8291d-2587-44f1-bf45-9dcddd92eb35",
+              "uuid": "fce43b3e-ce76-491a-b44b-068728c4f89d",
+              "parentUUID": "bf7fc4ff-1f5e-4f05-ac0c-76a18f23e4d8",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "e45f728f-39c9-4ba0-8dec-56d93115ab51",
-            "7193af84-a598-4f1e-9b14-67387b04c386",
-            "b3e69f66-96a1-488b-a3c6-4cbb286db8d8"
+            "c305f29f-db5f-4484-9805-115d81c11737",
+            "57a75248-f1ab-49f0-96be-8071fb0d0d54",
+            "fce43b3e-ce76-491a-b44b-068728c4f89d"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 4240,
+          "duration": 5236,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -121,7 +121,7 @@
     "mochawesome": {
       "options": {
         "quiet": false,
-        "reportFilename": "mochawesome",
+        "reportFilename": "[name]",
         "saveHtml": true,
         "saveJson": true,
         "consoleReporter": "spec",
@@ -135,7 +135,8 @@
         "reportDir": "cypress/reports",
         "overwrite": false,
         "html": true,
-        "json": true
+        "json": true,
+        "reportFilename": "[name]"
       },
       "version": "6.3.2"
     }
