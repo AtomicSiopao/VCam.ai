@@ -96,30 +96,30 @@ describe("VCam.ai Dashboard", () => {
       settings.renameWorkspace();
     });
 
-    it.skip("Should leave workspace if account has more than 1 workspace", () => {
-      settings.leaveWorkspace();
-    });
+    // it.skip("Should leave workspace if account has more than 1 workspace", () => {
+    //   settings.leaveWorkspace();
+    // });
 
-    it.skip("[SKIP] Should delete workspace if account has more than 1 workspace", () => {
-      // CURRENTLY SKIPPED DUE TO NUMBER OF WORKSPACES AVAILABLE IN TEST ACCOUNT
-      settings.deleteWorkspace();
-    });
+    // it.skip("[SKIP] Should delete workspace if account has more than 1 workspace", () => {
+    //   // CURRENTLY SKIPPED DUE TO NUMBER OF WORKSPACES AVAILABLE IN TEST ACCOUNT
+    //   settings.deleteWorkspace();
+    // });
 
-    it.skip("[SKIP] Domain and Workspace Discovery - Current LIMITATION", () => {
-      // Workspace Discovery cannot be tested via automation
-      const domain = "marco.com";
-      const verificationEmail = "kopi@marco.com";
-      settings.addDomain(domain, "Invite only", verificationEmail); // type: Instant Access, Request to join, Invite only
-    });
+    // it.skip("[SKIP] Domain and Workspace Discovery - Current LIMITATION", () => {
+    //   // Workspace Discovery cannot be tested via automation
+    //   const domain = "marco.com";
+    //   const verificationEmail = "kopi@marco.com";
+    //   settings.addDomain(domain, "Invite only", verificationEmail); // type: Instant Access, Request to join, Invite only
+    // });
   });
 
-  describe("TEAM", () => {
-    beforeEach(() => {
-      dashboard.navigateTo("Team");
-    });
+  // describe("TEAM", () => {
+  //   beforeEach(() => {
+  //     dashboard.navigateTo("Team");
+  //   });
 
-    it.skip("[SKIP] Should invite Users/Team Members via the Team Menu", () => {
-      team.inviteUsers(emails, "Member");
-    });
-  });
+  //   it.skip("[SKIP] Should invite Users/Team Members via the Team Menu", () => {
+  //     team.inviteUsers(emails, "Member");
+  //   });
+  // });
 });
