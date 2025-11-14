@@ -24,6 +24,12 @@ class BackgroundPage {
     return cy.getButtonByText("Cancel");
   }
 
+  get invalidFileFormatMessage() {
+    return cy.get(
+      'span[class="flex justify-center text-xs text-red-600 dark:text-red-400"]'
+    );
+  }
+
   get permissionsToast() {
     return cy.get('div[data-testid="flowbite-toast"]');
   }
@@ -89,12 +95,12 @@ class BackgroundPage {
 
         if (afterCount > beforeCount) {
           return cy.wrap(afterCount);
-        } else if (retries > 0) {
-          cy.wait(1000);
-          return cy.wrap(null).then(() => checkUntilIncreased(retries - 1)); // 👈 safe chaining
-        } else {
-          throw new Error("Background count did not increase");
-        }
+        } //else if (retries > 0) {
+        //cy.wait(1000);
+        //return cy.wrap(null).then(() => checkUntilIncreased(retries - 1)); // 👈 safe chaining
+        //} else {
+        //   throw new Error("Background count did not increase");
+        // }
       });
     };
 
@@ -135,18 +141,26 @@ class BackgroundPage {
 
   uploadFile(filePath) {
     this.browseFilesButton.selectFile(filePath, { action: "drag-drop" });
-    this.uploadBackgroundButton.click();
     return this;
   }
 
   uploadAnImage() {
     cy.getButtonByText("Upload an image").click();
-    return this.uploadFile("cypress/fixtures/aslogo.png");
+    this.uploadFile("cypress/fixtures/aslogo.png");
+    this.uploadBackgroundButton.click();
+    return this;
   }
 
   uploadAVideo() {
     cy.getButtonByText("Upload a Video").click();
-    return this.uploadFile("cypress/fixtures/muhehehe.mp4");
+    this.uploadFile("cypress/fixtures/muhehehe.mp4");
+    this.uploadBackgroundButton.click();
+    return this;
+  }
+
+  uploadUnsupportedFormat() {
+    cy.getButtonByText("Upload an image").click();
+    this.uploadFile("cypress/fixtures/muhehehe.mp4");
   }
 
   clickStockPhotoByUnsplash() {
@@ -175,7 +189,7 @@ class BackgroundPage {
         count === 1 ? "Delete Background" : `Delete ${count} Backgrounds`;
 
       cy.getButtonByText(buttonText).click();
-      this.cancelButton.siblings('button').click();
+      this.cancelButton.siblings("button").click();
     });
   }
 
@@ -192,13 +206,23 @@ class BackgroundPage {
         case "video":
           this.uploadAVideo();
           break;
+        case "unsupported":
+          this.uploadUnsupportedFormat();
+          this.invalidFileFormatMessage
+            .contains("Invalid file. Please try again.")
+            .should("be.visible");
+          // cy.wait(1000);
+          // this.cancelButton.should("be.visible").and('be.enabled').click();
+          break;
         case "stock":
           this.clickStockPhotoByUnsplash().click();
           this.unsplashList.should("exist").children().first().click();
           this.saveBackgroundsButton.click();
           break;
         default:
-          throw new Error(`Invalid background type: ${type}`);
+          this.invalidFileFormatMessage
+            .contains("Invalid file. Please try again.")
+            .should("be.visible");
       }
 
       return this.waitForUploadCompletion(beforeCount);

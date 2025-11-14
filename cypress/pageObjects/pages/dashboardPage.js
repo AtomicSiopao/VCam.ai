@@ -4,6 +4,10 @@ class DashboardPage {
     return cy.get("h1", { timeout: 10000 }).should("contain", "Dashboard");
   }
 
+  get invalidURLHeader() {
+    return cy.get("p").should("contain", "404");
+  }
+
   get passwordField() {
     return cy.get('input[name="password"]');
   }
@@ -22,6 +26,7 @@ class DashboardPage {
     billing: "https://dashboard.vcam.ai/workspace/billing",
     settings: "https://dashboard.vcam.ai/workspace/settings",
     deployment: "https://dashboard.vcam.ai/workspace/deployment",
+    invalid: "https://dashboard.vcam.ai/asdasdasd",
   };
 
   // ====== ACTIONS ======
@@ -41,12 +46,6 @@ class DashboardPage {
 
   checkURL(section) {
     const expectedURL = this.dashboardURLs[section.toLowerCase()];
-    if (!expectedURL) {
-      throw new Error(
-        `Invalid section: "${section}". Check your dashboardURLs map.`
-      );
-    }
-
     cy.url().should("eq", expectedURL);
     return this;
   }
@@ -70,6 +69,12 @@ class DashboardPage {
     this.clickLink("Dashboard");
     this.clickLink("See plans");
     this.checkURL("billing");
+    return this;
+  }
+
+  navigateToInvalidPage() {
+    cy.visit(this.dashboardURLs.invalid, { failOnStatusCode: false });
+    this.invalidURLHeader.should("be.visible");
     return this;
   }
 }

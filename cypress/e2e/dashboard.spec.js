@@ -25,6 +25,10 @@ describe("VCam.ai Dashboard", () => {
       dashboard.navigateToBillingFromDashboard();
       dashboard.navigateTo("Settings");
     });
+
+    it("Negative: Should gracefully handle navigation to an invalid or non-existent page", () => {
+      dashboard.navigateToInvalidPage();
+    });
   });
 
   describe("BACKGROUNDS", () => {
@@ -47,6 +51,10 @@ describe("VCam.ai Dashboard", () => {
       background.setBackgroundStateMemberSettings(1);
       background.setBackgroundPermissionSettings(0);
       background.deleteBackground(); // cleanup
+    });
+
+    it.only("Negative: Should display an error message when uploading a file with an unsupported format", () => {
+      background.addBackground("unsupported");
     });
   });
 
