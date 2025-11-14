@@ -1,13 +1,14 @@
-require('dotenv').config();
+require("dotenv").config();
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   reporter: "mochawesome",
   reporterOptions: {
-    reportDir: "cypress/reports", // where reports are saved
+    reportDir: "cypress/reports",
     overwrite: false,
     html: true,
     json: true,
+    reportFilename: "[name]",
   },
   numTestsKeptInMemory: 5,
   e2e: {

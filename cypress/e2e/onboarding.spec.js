@@ -3,7 +3,7 @@ const settings = require("../pageObjects/components/settings");
 const dashboard = require("../pageObjects/pages/dashboardPage");
 const onboarding = require("../pageObjects/pages/onboardingPage");
 
-describe.skip("VCam.ai Dashboard", () => {
+describe("VCam.ai Onboarding", () => {
   beforeEach(() => {
     dashboard.visit();
     login.login();

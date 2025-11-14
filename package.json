@@ -17,8 +17,8 @@
     "e2e:electron": "cypress run --browser electron",
     "e2e:headed": "cypress run --headed",
     "test": "cypress run && pnpm run report",
-    "merge-reports": "pnpm mochawesome-merge cypress/reports/*.json > cypress/reports/report.json",
-    "generate-report": "marge cypress/reports/report.json -f final-report -o cypress/reports/html",
+    "merge-reports": "pnpm mochawesome-merge cypress/reports/*-report.json > cypress/reports/report.json",
+    "generate-report": "pnpm marge cypress/reports/report.json --reportDir cypress/reports --inline",
     "report": "pnpm run merge-reports && pnpm run generate-report"
   }
 }
