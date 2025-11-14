@@ -15,7 +15,7 @@ describe("VCam.ai Dashboard", () => {
   });
 
   describe("DASHBOARD NAVIGATION", () => {
-    it.only("Should check navigation in the Dashboard while logged in", () => {
+    it("Should check navigation in the Dashboard while logged in", () => {
       dashboard.navigateTo("Dashboard");
       dashboard.navigateTo("Backgrounds");
       dashboard.navigateTo("Logos");
