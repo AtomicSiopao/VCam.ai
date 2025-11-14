@@ -1,0 +1,124 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 2,
+    "failures": -1,
+    "start": "2025-11-14T07:02:42.334Z",
+    "end": "2025-11-14T07:02:42.363Z",
+    "duration": 29,
+    "testsRegistered": 2,
+    "passPercent": null,
+    "pendingPercent": 100,
+    "other": 1,
+    "hasOther": true,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "d6ef00dc-f95b-4852-8d1a-6642e69ae683",
+      "title": "",
+      "fullFile": "cypress/e2e/onboarding.spec.js",
+      "file": "cypress/e2e/onboarding.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "edfdfa5f-0172-48a3-a23f-ec843a13a942",
+          "title": "VCam.ai Dashboard",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Should select 'For Personal Use' on the onboarding page",
+              "fullTitle": "VCam.ai Dashboard Should select 'For Personal Use' on the onboarding page",
+              "timedOut": null,
+              "duration": 0,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": true,
+              "context": null,
+              "code": "onboarding.setForPersonalUse();\n// CLEAN UP",
+              "err": {},
+              "uuid": "51fd43af-24c9-49b5-b4c5-4f03200842c9",
+              "parentUUID": "edfdfa5f-0172-48a3-a23f-ec843a13a942",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Should select 'for Team Use' on the onboarding page",
+              "fullTitle": "VCam.ai Dashboard Should select 'for Team Use' on the onboarding page",
+              "timedOut": null,
+              "duration": 0,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": true,
+              "context": null,
+              "code": "onboarding.setForTeamUse();\nonboarding.setupTeamWorkspace();\ndashboard.navigateTo(\"Settings\");\ncy.fixture(\"workspace.json\").as(\"workspace\").then(workspace => {\n  const wsName = workspace.name;\n  settings.workspaceName.should(\"eq\", wsName);\n});",
+              "err": {},
+              "uuid": "8d74c84d-9152-41d2-b304-6bccd11dd1b6",
+              "parentUUID": "edfdfa5f-0172-48a3-a23f-ec843a13a942",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [],
+          "pending": [
+            "51fd43af-24c9-49b5-b4c5-4f03200842c9",
+            "8d74c84d-9152-41d2-b304-6bccd11dd1b6"
+          ],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}
