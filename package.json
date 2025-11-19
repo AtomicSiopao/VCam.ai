@@ -4,9 +4,12 @@
   "description": "",
   "packageManager": "pnpm@10.15.1",
   "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^23.2.1",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.7",
     "cypress": "15.6.0",
     "cypress-real-events": "^1.15.0",
     "dotenv": "^17.2.3",
+    "esbuild": "^0.27.0",
     "mochawesome": "^7.1.4",
     "mochawesome-merge": "^5.0.0",
     "mochawesome-report-generator": "^6.3.2"
