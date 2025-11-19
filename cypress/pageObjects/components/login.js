@@ -36,14 +36,14 @@ class Login {
 
   inputEmailAddress() {
     cy.ignoreReactError();
-    const { email } = Cypress.env("credentials");
+    const email = Cypress.env("VCAM_EMAIL");
     this.emailAddressField.clear().click().type(email);
     return this;
   }
 
   inputPassword() {
-    const { password } = Cypress.env("credentials");
-    this.passwordField.clear().click().type(password);
+    const password = Cypress.env("VCAM_PASSWORD");
+    this.passwordField.clear({ force: true }).click({ force: true }).type(password, { force: true });
     return this;
   }
 
@@ -53,8 +53,7 @@ class Login {
   }
 
   login() {
-    this.inputEmailAddress().clickContinue();
-    this.passwordField.should("be.visible");
+    this.inputEmailAddress();
     this.inputPassword().clickContinue();
   }
 }

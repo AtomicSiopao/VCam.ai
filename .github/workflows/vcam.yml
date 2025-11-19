@@ -35,7 +35,7 @@ jobs:
           VCAM_PASSWORD: ${{ secrets.VCAM_PASSWORD }}
           WORKSPACE_NAME: ${{ secrets.WORKSPACE_NAME }}
         run: |
-          npx xvfb-maybe pnpm cypress run || true
+          npx xvfb-maybe pnpm cypress run
 
       - name: Check for mochawesome JSON files
         id: check_reports
