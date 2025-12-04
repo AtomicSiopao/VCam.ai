@@ -60,7 +60,7 @@ class OnboardingPage {
 
   // TEAM
   setWorkspaceName() {
-    cy.fixture("workspace.json").then((workspace) => {
+    cy.fixture("workspace/positive.json").then((workspace) => {
       const name = workspace.name;
       this.workspaceNameField.clear().type(name);
     });
@@ -68,7 +68,7 @@ class OnboardingPage {
   }
 
   inviteMembers() {
-    cy.fixture("users.json").then((users) => {
+    cy.fixture("users/positive.json").then((users) => {
       const emails = users.map((user) => user.email).join(", ");
       this.membersEmailField.type(emails + ", ");
       this.nextButton.click();
