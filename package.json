@@ -13,6 +13,9 @@
   },
   "scripts": {
     "cy:open": "cypress open",
+    "cy:dev": "CYPRESS_ENV=development cypress run",
+    "cy:staging": "CYPRESS_ENV=staging cypress run",
+    "cy:live": "CYPRESS_ENV=live cypress run",
     "e2e:chrome": "cypress run --browser chrome",
     "e2e:electron": "cypress run --browser electron",
     "e2e:headed": "cypress run --headed",

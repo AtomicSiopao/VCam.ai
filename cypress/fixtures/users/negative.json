@@ -1,0 +1,4 @@
+[
+  { "email": "invalid-email", "password": "short", "name": "", "nametag": "" },
+  { "email": "user@test.com", "password": "password", "name": "Test", "nametag": "Test" }
+]

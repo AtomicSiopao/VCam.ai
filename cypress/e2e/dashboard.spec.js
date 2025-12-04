@@ -81,7 +81,7 @@ describe("VCam.ai Dashboard", () => {
     });
 
     it("Should setup a Name Tag", () => {
-      cy.fixture("users.json")
+      cy.fixture("users/positive.json")
         .as("users")
         .then((user) => {
           nametag.selectNameTagDesign(2);

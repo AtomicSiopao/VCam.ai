@@ -27,7 +27,7 @@ class footer {
   }
 
   checkFooterLinks() {
-    cy.fixture("links.json").then((links) => {
+    cy.fixture("navigation/positive.json").then((links) => {
       links.footerLinks.map(({ text, url }) => this.checkURLInLink(text, url));
     });
   }

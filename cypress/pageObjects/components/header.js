@@ -27,7 +27,7 @@ class header {
   }
 
   checkHeaderLinks() {
-    cy.fixture("links.json").then((links) => {
+    cy.fixture("navigation/positive.json").then((links) => {
       links.headerLinks.map(({ text, url }) => this.checkURLInLink(text, url));
     });
   }
