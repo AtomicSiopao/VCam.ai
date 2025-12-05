@@ -26,10 +26,8 @@ class footer {
     return this.getLinkByText(text).invoke("attr", "href").should("contain", url);
   }
 
-  checkFooterLinks() {
-    cy.fixture("navigation/positive.json").then((links) => {
-      links.footerLinks.map(({ text, url }) => this.checkURLInLink(text, url));
-    });
+  checkFooterLinks(links) {
+    links.footerLinks.map(({ text, url }) => this.checkURLInLink(text, url));
   }
 }
 module.exports = new footer();

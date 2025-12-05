@@ -14,15 +14,14 @@ describe("VCam.ai Onboarding", () => {
     onboarding.setForPersonalUse();
   });
 
-  // it.skip("Should select 'for Team Use' on the onboarding page", () => {
-  //   onboarding.setForTeamUse();
-  //   onboarding.setupTeamWorkspace();
-  //   dashboard.navigateTo("Settings");
-  //   cy.fixture("workspace.json")
-  //     .as("workspace")
-  //     .then((workspace) => {
-  //       const wsName = workspace.name;
-  //       settings.workspaceName.should("eq", wsName);
-  //     });
-  // });
+  it("Should select 'for Team Use' on the onboarding page", () => {
+    onboarding.setForTeamUse();
+    cy.fixture("workspace/positive.json").then((workspace) => {
+      cy.fixture("users/positive.json").then((users) => {
+        onboarding.setupTeamWorkspace(workspace.name, users);
+        dashboard.navigateTo("Settings");
+        settings.workspaceName.should("eq", workspace.name);
+      });
+    });
+  });
 });
