@@ -60,19 +60,20 @@ class OnboardingPage {
 
   // TEAM
   setWorkspaceName() {
-    cy.fixture("workspace/positive.json").then((workspace) => {
-      const name = workspace.name;
-      this.workspaceNameField.clear().type(name);
+    cy.fixture("workspace/positive.json").then((data) => {
+      this.workspaceNameField.clear().type(data.workspace.name);
     });
     return this;
   }
 
   inviteMembers() {
-    cy.fixture("users/positive.json").then((users) => {
-      const emails = users.map((user) => user.email).join(", ");
-      this.membersEmailField.type(emails + ", ");
+    cy.fixture("workspace/positive.json").then((data) => {
+      cy.wrap(data.workspace.members).each((member) => {
+        this.membersEmailField.type(member + ",");
+      });
       this.nextButton.click();
     });
+
     return this;
   }
 

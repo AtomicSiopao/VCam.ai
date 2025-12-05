@@ -1,7 +1,67 @@
 [
-  { "email": "user1@test.com", "password": "Pass123", "name": "Kopi Marco", "nametag": "CEO" },
-  { "email": "user2@test.com", "password": "Pass123", "name": "Toffee Marco", "nametag": "CAO" },
-  { "email": "user3@test.com", "password": "Pass123", "name": "Bella Lopez", "nametag": "CMO" },
-  { "email": "user4@test.com", "password": "Pass123", "name": "Charlie Marco", "nametag": "CBO" },
-  { "email": "user5@test.com", "password": "Pass123", "name": "Mushi Marco", "nametag": "Kagawad" }
+  {
+    "email": "user1@test.com",
+    "password": "Pass123",
+    "name": "Kopi Marco",
+    "nametag": {
+      "position": "CEO",
+      "design": 2,
+      "allowNameTagsInApp": 1,
+      "allowMembersToToggleNameTag": 0,
+      "allowMembersToSetDetails": 0,
+      "allowMembersToSetDesign": 0
+    }
+  },
+  {
+    "email": "user2@test.com",
+    "password": "Pass123",
+    "name": "Toffee Marco",
+    "nametag": {
+      "position": "CAO",
+      "design": 2,
+      "allowNameTagsInApp": 1,
+      "allowMembersToToggleNameTag": 0,
+      "allowMembersToSetDetails": 0,
+      "allowMembersToSetDesign": 0
+    }
+  },
+  {
+    "email": "user3@test.com",
+    "password": "Pass123",
+    "name": "Bella Lopez",
+    "nametag": {
+      "position": "SK Tiyanak",
+      "design": 2,
+      "allowNameTagsInApp": 1,
+      "allowMembersToToggleNameTag": 0,
+      "allowMembersToSetDetails": 0,
+      "allowMembersToSetDesign": 0
+    }
+  },
+  {
+    "email": "user4@test.com",
+    "password": "Pass123",
+    "name": "Charlie Marco",
+    "nametag": {
+      "position": "CBO",
+      "design": 2,
+      "allowNameTagsInApp": 1,
+      "allowMembersToToggleNameTag": 0,
+      "allowMembersToSetDetails": 0,
+      "allowMembersToSetDesign": 0
+    }
+  },
+  {
+    "email": "mushi@test.com",
+    "password": "Pass123",
+    "name": "Mushi Marco",
+    "nametag": {
+      "position": "SK Chairman",
+      "design": 2,
+      "allowNameTagsInApp": 1,
+      "allowMembersToToggleNameTag": 0,
+      "allowMembersToSetDetails": 0,
+      "allowMembersToSetDesign": 0
+    }
+  }
 ]

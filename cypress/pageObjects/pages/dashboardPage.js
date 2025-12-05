@@ -1,37 +1,64 @@
 class DashboardPage {
-  // ====== SELECTORS ======
-  get header() {
-    return cy.get("h1", { timeout: 10000 }).should("contain", "Dashboard");
-  }
-
-  get invalidURLHeader() {
-    return cy.get("p").should("contain", "404");
-  }
-
-  get passwordField() {
-    return cy.get('input[name="password"]');
-  }
-
-  get continueButton() {
-    return cy.get('button[data-localization-key="formButtonPrimary"]');
-  }
-
-  // ====== CONSTANT MAP ======
-  dashboardURLs = {
-    dashboard: "https://dashboard.vcam.ai/",
-    backgrounds: "https://dashboard.vcam.ai/app/backgrounds",
-    logos: "https://dashboard.vcam.ai/app/logos",
-    "name tags": "https://dashboard.vcam.ai/app/nametags",
-    team: "https://dashboard.vcam.ai/workspace/team",
-    billing: "https://dashboard.vcam.ai/workspace/billing",
-    settings: "https://dashboard.vcam.ai/workspace/settings",
-    deployment: "https://dashboard.vcam.ai/workspace/deployment",
-    invalid: "https://dashboard.vcam.ai/asdasdasd",
+  // ====== URL & HEADER MAP ======
+  sections = {
+    dashboard: { url: "https://dashboard.vcam.ai/", header: "Dashboard" },
+    backgrounds: {
+      url: "https://dashboard.vcam.ai/app/backgrounds",
+      header: "Backgrounds",
+    },
+    logos: { url: "https://dashboard.vcam.ai/app/logos", header: "Logos" },
+    nametags: {
+      url: "https://dashboard.vcam.ai/app/nametags",
+      header: "Name Tags",
+    },
+    team: { url: "https://dashboard.vcam.ai/workspace/team", header: "Team" },
+    billing: {
+      url: "https://dashboard.vcam.ai/workspace/billing",
+      header: "Billing",
+    },
+    settings: {
+      url: "https://dashboard.vcam.ai/workspace/settings",
+      header: "Settings",
+    },
+    userSettings: {
+      url: "https://dashboard.vcam.ai/settings",
+      header: "Personal Settings",
+      linkText: "Profile Settings", // matches actual <a> in DOM
+      global: true,
+    },
+    deployment: {
+      url: "https://dashboard.vcam.ai/workspace/deployment",
+      header: "Deployment",
+    },
   };
+
+  // Normalize helper
+  normalize(str) {
+    return str.toLowerCase().replace(/\s+/g, "");
+  }
+
+  // Resolve section from key OR header
+  resolveSection(section) {
+    const normalized = this.normalize(section);
+
+    // Try direct key match
+    if (this.sections[normalized]) {
+      return this.sections[normalized];
+    }
+
+    // Try matching by header
+    const fromHeader = Object.values(this.sections).find(
+      (s) => this.normalize(s.header) === normalized
+    );
+
+    if (fromHeader) return fromHeader;
+
+    throw new Error(`Invalid section: "${section}".`);
+  }
 
   // ====== ACTIONS ======
   visit() {
-    cy.visit("https://dashboard.vcam.ai/");
+    cy.visit(this.sections.dashboard.url);
     return this;
   }
 
@@ -44,38 +71,84 @@ class DashboardPage {
     return this;
   }
 
+  checkHeader(section) {
+    const sec = this.resolveSection(section);
+    cy.get("h1", { timeout: 10000 }).should("contain", sec.header);
+    return this;
+  }
+
   checkURL(section) {
-    const expectedURL = this.dashboardURLs[section.toLowerCase()];
-    cy.url().should("eq", expectedURL);
+    const sec = this.resolveSection(section);
+    cy.url().should("eq", sec.url);
     return this;
   }
 
-  // ====== NAVIGATION ======
-  navigateTo(page) {
-    // Wait for a stable navigation element to ensure the menu is loaded
-    this.getLinkByText("Backgrounds").should("be.visible");
+  // ====== NAVIGATION HELPERS ======
+  navigateTo(section) {
+    const sec = this.resolveSection(section);
 
-    if (page.toLowerCase() === "dashboard") {
-      this.clickLink("Backgrounds");
-      this.checkURL("dashboard");
-    } else {
-      this.clickLink(page);
-      this.checkURL(page);
-    }
+    // Click the link using linkText if defined, otherwise header
+    const clickText = sec.linkText || sec.header;
+    this.clickLink(clickText);
+
+    // Validate URL and header
+    this.checkURL(section);
+    this.checkHeader(section);
+
     return this;
   }
 
-  navigateToBillingFromDashboard() {
+  // ====== SHORTCUTS ======
+  goToDashboard() {
+    return this.navigateTo("dashboard");
+  }
+  goToBackgrounds() {
+    return this.navigateTo("backgrounds");
+  }
+  goToLogos() {
+    return this.navigateTo("logos");
+  }
+  goToNameTags() {
+    return this.navigateTo("nametags");
+  }
+  goToTeam() {
+    return this.navigateTo("team");
+  }
+  goToBilling() {
+    return this.navigateTo("billing");
+  }
+  goToSettings() {
+    return this.navigateTo("settings");
+  }
+  goToDeployment() {
+    return this.navigateTo("deployment");
+  }
+
+  goToBillingFromDashboard() {
     this.clickLink("Dashboard");
     this.clickLink("See plans");
-    this.checkURL("billing");
+    this.checkURL("billing").checkHeader("billing");
     return this;
   }
 
-  navigateToInvalidPage() {
-    cy.visit(this.dashboardURLs.invalid, { failOnStatusCode: false });
-    this.invalidURLHeader.should("be.visible");
+  get userSettingsLink(){
+    return cy.getLinkByText("Settings");
+  }
+
+  get userAvatar() {
+    return cy.get('img[data-testid="flowbite-avatar-img"]');
+  }
+
+  goToUserSettings() {
+    this.userAvatar.click();
+    this.userSettingsLink.click()
     return this;
+  }
+
+  // Optional helper to detect global pages
+  isGlobalPage(section) {
+    const sec = this.resolveSection(section);
+    return sec.global === true;
   }
 }
 

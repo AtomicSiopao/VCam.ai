@@ -1,3 +1,23 @@
 {
-  "name": "Workspace Name Test"
+  "user": {
+    "firstName": "James",
+    "lastName": "Marco",
+    "email": "jama@splitmedialabs.com",
+    "password": "Test1234!",
+    "newPassword": "NewTest1234!",
+    "confirmPassword": "NewTest1234!",
+    "signOutOfOtherSessions": true
+  },
+  "workspace": {
+    "name": "Test Generated Workspace",
+    "logoPath": "cypress/fixtures/aslogo.png",
+    "members": [
+      "user1@user.com",
+      "user2@user.com",
+      "user3@user.com",
+      "user4@user.com",
+      "user5@user.com"
+    ],
+    "code": "UPGRADE-CODE-12345"
+  }
 }
