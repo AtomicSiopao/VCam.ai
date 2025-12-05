@@ -59,8 +59,8 @@ class Settings {
     const timestamp = now.getTime();
     cy.intercept("POST", "**/v1/organizations/*").as("renameWorkspace");
 
-    cy.fixture("workspace/positive.json").then((workspace) => {
-      let ts = workspace.name + timestamp;
+    cy.fixture("workspace/positive.json").then((data) => {
+      let ts = data.workspace.name + timestamp;
       this.workspaceNameField.focus().clear().type(ts);
       this.saveButton.click();
     });

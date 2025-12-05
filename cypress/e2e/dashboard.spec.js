@@ -146,8 +146,14 @@ describe("VCam.ai Dashboard", () => {
       dashboard.goToUserSettings();
     });
 
-    it("should update user's name", () => {
+    it("should update user's name using valid strings", () => {
       cy.fixture("workspace/positive").then((data) => {
+        userSettings.updateUserInfo(data.user.firstName, data.user.lastName);
+      });
+    });
+
+    it.only("should update user's name using emojis", () => {
+      cy.fixture("workspace/edge_cases").then((data) => {
         userSettings.updateUserInfo(data.user.firstName, data.user.lastName);
       });
     });

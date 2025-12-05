@@ -16,14 +16,10 @@ describe("VCam.ai Onboarding", () => {
     settings.deleteWorkspace();
   });
 
-  it.only("Should login and select Team Use on the onboarding page", () => {
+  it("Should login and select Team Use on the onboarding page", () => {
     onboarding.setForTeamUse();
-    //cy.fixture("workspace/positive")//.then((data) => {
-    //let wsName = data.workspace.name;
-    //let members = data.workspace.members;
     onboarding.setupTeamWorkspace();
-    //dashboard.goToSettings();
-    //settings.workspaceName.should("eq", wsName);
-    //});
+    dashboard.goToSettings();
+    settings.workspaceName.should("eq", wsName);
   });
 });
