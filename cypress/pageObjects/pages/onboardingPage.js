@@ -59,27 +59,21 @@ class OnboardingPage {
   }
 
   // TEAM
-  setWorkspaceName() {
-    cy.fixture("workspace/positive.json").then((data) => {
-      this.workspaceNameField.clear().type(data.workspace.name);
-    });
+  setWorkspaceName(name) {
+    this.workspaceNameField.clear().type(name);
     return this;
   }
 
-  inviteMembers() {
-    cy.fixture("workspace/positive.json").then((data) => {
-      cy.wrap(data.workspace.members).each((member) => {
-        this.membersEmailField.type(member + ",");
-      });
-      this.nextButton.click();
-    });
-
+  inviteMembers(users) {
+    const emails = users.map((user) => user.email).join(", ");
+    this.membersEmailField.type(emails + ", ");
+    this.nextButton.click();
     return this;
   }
 
-  setupTeamWorkspace() {
-    this.setWorkspaceName();
-    this.inviteMembers();
+  setupTeamWorkspace(workspaceName, users) {
+    this.setWorkspaceName(workspaceName);
+    this.inviteMembers(users);
     this.goToDashboard();
   }
 

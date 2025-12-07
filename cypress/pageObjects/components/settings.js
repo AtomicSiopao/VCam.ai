@@ -54,16 +54,14 @@ class Settings {
     cy.getButtonByText(type).click();
   }
 
-  renameWorkspace() {
+  renameWorkspace(workspace) {
     const now = new Date();
     const timestamp = now.getTime();
     cy.intercept("POST", "**/v1/organizations/*").as("renameWorkspace");
 
-    cy.fixture("workspace/positive.json").then((data) => {
-      let ts = data.workspace.name + timestamp;
-      this.workspaceNameField.focus().clear().type(ts);
-      this.saveButton.click();
-    });
+    let ts = workspace.name + timestamp;
+    this.workspaceNameField.focus().clear().type(ts);
+    this.saveButton.click();
 
     cy.wait("@renameWorkspace").its("response.statusCode").should("eq", 200);
   }

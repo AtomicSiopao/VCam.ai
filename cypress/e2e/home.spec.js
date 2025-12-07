@@ -8,11 +8,15 @@ describe("VCam.ai Home Page", () => {
   });
 
   it("Should check that all the URLs in the header are correct", () => {
-    header.checkHeaderLinks();
+    cy.fixture("navigation/positive.json").then((links) => {
+      header.checkHeaderLinks(links);
+    });
   });
 
   it("Should check that all the URLs in the footer are correct", () => {
-    footer.checkFooterLinks();
+    cy.fixture("navigation/positive.json").then((links) => {
+      footer.checkFooterLinks(links);
+    });
   });
 
   it("Should check all URLs in the Home Page are correct", () => {
