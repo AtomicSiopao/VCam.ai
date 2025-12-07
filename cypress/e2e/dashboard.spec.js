@@ -5,7 +5,9 @@ const logo = require("../pageObjects/components/logo");
 const nametag = require("../pageObjects/components/nametag");
 const settings = require("../pageObjects/components/settings");
 const team = require("../pageObjects/components/team");
-const onboarding = require("../pageObjects/pages/onboardingPage");
+const billing = require("../pageObjects/components/billing");
+const userSettings = require("../pageObjects/components/userSettings");
+const now = new Date().toLocaleTimeString();
 
 describe("VCam.ai Dashboard", () => {
   beforeEach(() => {
@@ -22,12 +24,8 @@ describe("VCam.ai Dashboard", () => {
       dashboard.navigateTo("Name Tags");
       dashboard.navigateTo("Team");
       dashboard.navigateTo("Billing");
-      dashboard.navigateToBillingFromDashboard();
       dashboard.navigateTo("Settings");
-    });
-
-    it("Negative: Should gracefully handle navigation to an invalid or non-existent page", () => {
-      dashboard.navigateToInvalidPage();
+      dashboard.goToBillingFromDashboard();
     });
   });
 
@@ -53,7 +51,7 @@ describe("VCam.ai Dashboard", () => {
       background.deleteBackground(); // cleanup
     });
 
-    it.only("Negative: Should display an error message when uploading a file with an unsupported format", () => {
+    it("Negative: Should display an error message when uploading a file with an unsupported format", () => {
       background.addBackground("unsupported");
     });
   });
@@ -82,14 +80,14 @@ describe("VCam.ai Dashboard", () => {
 
     it("Should setup a Name Tag", () => {
       cy.fixture("users/positive.json")
-        .as("users")
         .then((user) => {
-          nametag.selectNameTagDesign(2);
-          nametag.setNameTag(user[1].name, user[1].nametag);
-          nametag.allowNameTagsInApp(1); // 1 to enable
-          nametag.allowMembersToToggleNameTag(0);
-          nametag.allowMembersToSetDetails(0);
-          nametag.allowMembersToSetDesign(0);
+        user = user[1];
+          nametag.selectNameTagDesign(user.nametag.design);
+          nametag.setNameTag(user.name, user.nametag.position);
+          nametag.allowNameTagsInApp(user.nametag.allowNameTagsInApp);
+          nametag.allowMembersToToggleNameTag(user.nametag.allowMembersToToggleNameTag);
+          nametag.allowMembersToSetDetails(user.nametag.allowMembersToSetDetails);
+          nametag.allowMembersToSetDesign(user.nametag.allowMembersToSetDesign);
           nametag.selectNameTagDesign(0); //Cleanup. Set to default design again.
         });
     });
@@ -132,4 +130,34 @@ describe("VCam.ai Dashboard", () => {
   //     team.inviteUsers(emails, "Member");
   //   });
   // });
+
+  describe("License Upgrade", () => {
+    beforeEach(() => {
+      dashboard.goToBilling();
+    });
+
+    it("should upgrade license by redeeming license code", () => {
+      cy.fixture("workspace/positive").then((data) => {
+        billing.upgradeLicense(data.workspace.code);
+      });
+    });
+  });
+
+  describe("User Profile", () => {
+    beforeEach(() => {
+      dashboard.goToUserSettings();
+    });
+
+    it("should update user's name using valid strings", () => {
+      cy.fixture("workspace/positive").then((data) => {
+        userSettings.updateUserInfo(data.user.firstName, data.user.lastName);
+      });
+    });
+
+    it.only("should update user's name using emojis", () => {
+      cy.fixture("workspace/edge_cases").then((data) => {
+        userSettings.updateUserInfo(data.user.firstName, data.user.lastName);
+      });
+    });
+  });
 });

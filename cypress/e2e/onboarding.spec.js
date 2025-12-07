@@ -10,8 +10,10 @@ describe("VCam.ai Onboarding", () => {
     cy.ignoreReactError();
   });
 
-  it("Should select 'For Personal Use' on the onboarding page", () => {
+  it("Should login and select 'For Personal Use' on the onboarding page", () => {
     onboarding.setForPersonalUse();
+    dashboard.goToSettings();
+    settings.deleteWorkspace();
   });
 
   it("Should select 'for Team Use' on the onboarding page", () => {

@@ -31,6 +31,10 @@ class NameTagPage {
     return cy.get('input[name="description"]');
   }
 
+  get saveButton() {
+    return cy.getButtonByText("Save");
+  }
+
   toggleSwitch(index, expectedState) {
     cy.get('button[role="switch"]')
       .eq(index)
@@ -50,7 +54,7 @@ class NameTagPage {
       .should("be.visible")
       .realHover()
       .within(() => {
-        this.nameTagDesignDropdown.click({force: true});
+        this.nameTagDesignDropdown.click({ force: true });
         this.setAsDefault.click({ force: true });
       });
   }
@@ -66,6 +70,7 @@ class NameTagPage {
   setNameTag(name, desc) {
     this.setName(name);
     this.setDescription(desc);
+    this.saveButton.click();
     return this;
   }
 
