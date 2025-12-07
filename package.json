@@ -4,7 +4,7 @@
   "description": "",
   "packageManager": "pnpm@10.15.1",
   "devDependencies": {
-    "cypress": "15.6.0",
+    "cypress": "15.7.1",
     "cypress-real-events": "^1.15.0",
     "dotenv": "^17.2.3",
     "mochawesome": "^7.1.4",
