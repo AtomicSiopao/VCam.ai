@@ -1,11 +1,4 @@
 class footer {
-  getButtonByText(btnText) {
-    return cy.contains("button", btnText);
-  }
-
-  getLinkByText(linkText) {
-    return cy.contains("a", linkText);
-  }
   clickUseCasesMenuButton() {
     return cy.getButtonByText("Use Cases").click();
   }
@@ -23,7 +16,7 @@ class footer {
   }
 
   checkURLInLink(text, url) {
-    return this.getLinkByText(text).invoke("attr", "href").should("contain", url);
+    return cy.getLinkByText(text).invoke("attr", "href").should("contain", url);
   }
 
   checkFooterLinks(links) {
