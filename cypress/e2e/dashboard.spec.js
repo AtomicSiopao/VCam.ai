@@ -44,7 +44,7 @@ describe("VCam.ai Dashboard", () => {
       background.deleteBackground(); // cleanup
     });
 
-    it("Should select a stock photo as background", () => {
+    it.only("Should select a stock photo as background", () => {
       background.addBackground("stock");
       background.setBackgroundStateMemberSettings(1);
       background.setBackgroundPermissionSettings(0);
@@ -154,7 +154,7 @@ describe("VCam.ai Dashboard", () => {
       });
     });
 
-    it.only("should update user's name using emojis", () => {
+    it("should update user's name using emojis", () => {
       cy.fixture("workspace/edge_cases").then((data) => {
         userSettings.updateUserInfo(data.user.firstName, data.user.lastName);
       });
