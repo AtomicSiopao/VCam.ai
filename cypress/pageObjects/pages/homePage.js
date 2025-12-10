@@ -8,10 +8,6 @@ class HomePage {
     return cy.url();
   }
 
-  get contactSalesButton(){
-    return cy.getButtonByText("Contact Sales");
-  }
-
   // ASSERTIONS
   verifyDashboardURL() {
     this.dashboardURL.should("include", "dashboard.vcam.ai");
@@ -37,46 +33,47 @@ class HomePage {
   }
 
   // NAVIGATION SHORTCUTS
-  clickLogInLink() { return this.clickLink("Log in"); }
-  clickGetStartedLink() { return this.clickLink("Get started"); }
-  clickForCompaniesAndTeamsLink() { return this.clickLink("For companies & teams"); }
-  clickUseCasesMenuButton() { return this.clickButton("Use Cases"); }
-  clickFeaturesMenuLink() { return this.clickLink("Features"); }
-  clickPricingMenuLink() { return this.clickLink("Pricing"); }
-  clickResourcesMenuButton() { return this.clickButton("Resources"); }
+  clickLogInLink() {
+    return this.clickLink("Log in");
+  }
+  clickGetStartedLink() {
+    return this.clickLink("Get started");
+  }
+  clickForCompaniesAndTeamsLink() {
+    return this.clickLink("For companies & teams");
+  }
+  clickUseCasesMenuButton() {
+    return this.clickButton("Use Cases");
+  }
+  clickFeaturesMenuLink() {
+    return this.clickLink("Features");
+  }
+  clickPricingMenuLink() {
+    return this.clickLink("Pricing");
+  }
+  clickResourcesMenuButton() {
+    return this.clickButton("Resources");
+  }
 
   // VALIDATIONS
   checkURLInLink(text, expectedUrl) {
-    cy.getLinkByText(text)
-      .should("have.attr", "href", expectedUrl);
+    cy.getLinkByText(text).should("have.attr", "href", expectedUrl);
     return this;
   }
 
   getAllGetStartedButtons() {
     cy.getLinkByText("Get started").each(($el) => {
-      cy.wrap($el)
-        .should("have.attr", "href", "https://dashboard.vcam.ai/");
+      cy.wrap($el).should("have.attr", "href", "https://dashboard.vcam.ai/");
     });
     return this;
   }
 
   checkHomePageLinks() {
-    const linksToCheck = [
-      {
-        text: "Read the Intel white paper",
-        url: "https://www.intel.com/content/dam/develop/external/us/en/documents/xsplitvcam.pdf",
-      },
-      {
-        text: "Learn how to get started",
-        url: "https://help.vcam.ai/en/article/quick-start-guide-1a762y2/",
-      },
-      {
-        text: "Contact Sales",
-        url: "https://www.vcam.ai/sales",
-      },
-    ];
-
-    linksToCheck.forEach(({ text, url }) => this.checkURLInLink(text, url));
+    cy.fixture("links").then((links) => {
+      links.homePageLinks.forEach(({ text, url }) => {
+        this.checkURLInLink(text, url);
+      });
+    });
     return this;
   }
 }
