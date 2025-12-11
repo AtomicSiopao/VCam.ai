@@ -9,6 +9,7 @@ permissions:
 jobs:
   cypress-tests:
     runs-on: ubuntu-latest
+    environment: vcam_fixtures_live
 
     steps:
       - name: Checkout repository
@@ -30,10 +31,9 @@ jobs:
 
       - name: Run Cypress tests (xvfb)
         env:
-          DASHBOARD_URL: ${{ secrets.DASHBOARD_URL }}
-          VCAM_EMAIL: ${{ secrets.VCAM_EMAIL }}
-          VCAM_PASSWORD: ${{ secrets.VCAM_PASSWORD }}
-          WORKSPACE_NAME: ${{ secrets.WORKSPACE_NAME }}
+          BASEURL: ${{ vars.BASEURL }}
+          USER_EMAIL: ${{ secrets.USER_EMAIL }}
+          USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
         run: |
           npx xvfb-maybe pnpm cypress run || true
 

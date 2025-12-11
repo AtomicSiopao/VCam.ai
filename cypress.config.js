@@ -3,36 +3,53 @@ const { defineConfig } = require("cypress");
 const fs = require("fs");
 const path = require("path");
 
-// Define the path to the cypress.env.json file
-const envConfigPath = path.resolve(__dirname, "cypress.env.json");
+// Function to get config from cypress.env.json
+const getConfigFromEnvFile = () => {
+  const envConfigPath = path.resolve(__dirname, "cypress.env.json");
+  try {
+    const environmentConfig = JSON.parse(fs.readFileSync(envConfigPath, "utf-8"));
+    const environment = process.env.CYPRESS_ENV || "live";
+    const config = environmentConfig[environment];
 
-let environmentConfig;
-
-try {
-  // Read the cypress.env.json file
-  environmentConfig = JSON.parse(fs.readFileSync(envConfigPath, "utf-8"));
-} catch (e) {
-  // If the file doesn't exist, throw a helpful error
-  if (e.code === "ENOENT") {
-    throw new Error(
-      `\n\nERROR: cypress.env.json not found.\n` +
-      `Please create this file by copying cypress.env.json.example to cypress.env.json and filling in the values.\n` +
-      `You can do this by running the following command in your terminal:\n` +
-      `cp cypress.env.json.example cypress.env.json\n\n`
-    );
+    if (!config) {
+      throw new Error(`Configuration for environment "${environment}" not found in cypress.env.json`);
+    }
+    return {
+      baseUrl: config.baseUrl,
+      email: config.email,
+      password: config.password,
+    };
+  } catch (e) {
+    if (e.code === "ENOENT") {
+      // Suppress error if running in CI with env vars
+      if (process.env.BASEURL && process.env.USER_EMAIL && process.env.USER_PASSWORD) {
+        return null;
+      }
+      throw new Error(
+        `\n\nERROR: cypress.env.json not found.\n` +
+        `Please create this file by copying cypress.env.json.example to cypress.env.json and filling in the values.\n` +
+        `You can do this by running the following command in your terminal:\n` +
+        `cp cypress.env.json.example cypress.env.json\n\n`
+      );
+    }
+    throw e;
   }
-  // If there's another error, re-throw it
-  throw e;
-}
+};
 
-// Get the current environment from the CYPRESS_ENV variable, default to 'live'
-const environment = process.env.CYPRESS_ENV || "live";
+// Determine config from environment variables or file
+const baseUrl = process.env.BASEURL;
+const email = process.env.USER_EMAIL;
+const password = process.env.USER_PASSWORD;
 
-// Get the configuration for the current environment
-const config = environmentConfig[environment];
+let finalConfig;
 
-if (!config) {
-  throw new Error(`Configuration for environment "${environment}" not found in cypress.env.json`);
+if (baseUrl && email && password) {
+  finalConfig = { baseUrl, email, password };
+} else {
+  finalConfig = getConfigFromEnvFile();
+  if (!finalConfig) {
+      throw new Error("Cypress configuration could not be loaded. Please provide environment variables or a valid cypress.env.json file.");
+  }
 }
 
 module.exports = defineConfig({
@@ -48,15 +65,15 @@ module.exports = defineConfig({
   e2e: {
     experimentalMemoryManagement: true,
     chromeWebSecurity: false,
-    baseUrl: config.baseUrl,
+    baseUrl: finalConfig.baseUrl,
     video: false,
     specPattern: "./cypress/e2e/*.spec.js",
     viewportWidth: 1280,
     viewportHeight: 720,
     env: {
       credentials: {
-        email: config.email,
-        password: config.password,
+        email: finalConfig.email,
+        password: finalConfig.password,
       },
     },
   },
