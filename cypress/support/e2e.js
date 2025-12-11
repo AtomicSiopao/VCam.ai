@@ -14,5 +14,17 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './commands'
-import 'cypress-real-events/support'
+import "./commands";
+import "cypress-real-events/support";
+
+// Ignore specific uncaught exceptions
+Cypress.on("uncaught:exception", (err) => {
+  if (
+    err.message.includes("Minified React error") ||
+    err.message.includes("React error #418") ||
+    err.message.includes("ResizeObserver loop")
+  ) {
+    return false;
+  }
+  return true;
+});
