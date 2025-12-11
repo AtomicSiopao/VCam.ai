@@ -83,7 +83,7 @@ class Settings {
     this.domainField.clear().type(domain);
     this.setDomainDiscovery(type);
     this.addDomainButtonOnModal.click();
-    this.verificationEmailField.clear().type(verificationEmail);
+    this.verificationEmailField.clear().type(verificationEmail, { log: false });
   }
 
   deleteWorkspace() {

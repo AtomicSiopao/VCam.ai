@@ -30,20 +30,20 @@ class Login {
   }
 
   visit() {
-    cy.visit("https://dashboard.vcam.ai/");
+    cy.visit(Cypress.env.BASEURL);
     return this;
   }
 
   inputEmailAddress() {
     cy.ignoreReactError();
     const { email } = Cypress.env("credentials");
-    this.emailAddressField.clear().click().type(email);
+    this.emailAddressField.clear().click().type(email, { log: false });
     return this;
   }
 
   inputPassword() {
     const { password } = Cypress.env("credentials");
-    this.passwordField.clear().click().type(password);
+    this.passwordField.clear().click().type(password, { log: false });
     return this;
   }
 

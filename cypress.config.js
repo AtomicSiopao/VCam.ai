@@ -30,11 +30,11 @@ const { defineConfig } = require("cypress");
 
 // Get the configuration for the current environment
 // const config = environmentConfig[environment];
-const config = {
-  baseUrl: process.env.BASEURL,
-  email: process.env.VCAM_EMAIL,
-  password: process.env.VCAM_PASSWORD,
-}
+// const config = {
+//   baseUrl: process.env.BASEURL,
+//   email: process.env.VCAM_EMAIL,
+//   password: process.env.VCAM_PASSWORD,
+// }
 
 // if (!config) {
 //   throw new Error(`Configuration for environment "${environment}" not found in cypress.env.json`);
@@ -53,15 +53,15 @@ module.exports = defineConfig({
   e2e: {
     experimentalMemoryManagement: true,
     chromeWebSecurity: false,
-    baseUrl: config.baseUrl,
+    baseUrl: process.env.BASEURL,
     video: false,
     specPattern: "./cypress/e2e/*.spec.js",
     viewportWidth: 1280,
     viewportHeight: 720,
     env: {
       credentials: {
-        email: config.email,
-        password: config.password,
+        email: process.env.VCAM_EMAIL,
+        password: process.env.VCAM_PASSWORD,
       },
     },
   },
