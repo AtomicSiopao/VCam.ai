@@ -10,7 +10,7 @@ const now = new Date().toLocaleTimeString();
 
 describe("VCam.ai Dashboard", () => {
   beforeEach(() => {
-    cy.session("loginSession", () => {
+    cy.session("login", () => {
       cy.login(
         Cypress.env("credentials").email,
         Cypress.env("credentials").password

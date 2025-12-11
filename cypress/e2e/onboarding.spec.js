@@ -4,7 +4,7 @@ const onboarding = require("../pageObjects/pages/onboardingPage");
 
 describe("VCam.ai Onboarding", () => {
   beforeEach(() => {
-    cy.session("loginSession", () => {
+    cy.session("login", () => {
       cy.login(
         Cypress.env("credentials").email,
         Cypress.env("credentials").password

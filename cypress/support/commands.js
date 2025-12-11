@@ -44,7 +44,26 @@ Cypress.Commands.add("logout", () => {
 //
 //
 // -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
+Cypress.Commands.add("login", (email, password) => {
+  cy.visit("/");
+  cy.get("input#identifier-field", { timeout: 10000 }).as("emailAddressField");
+  cy.get('input[name="password"]').as("passwordField");
+  cy.get('button[data-localization-key="formButtonPrimary"]').as(
+    "continueButton"
+  );
+
+  cy.get("@emailAddressField").clear().click().type(email, { log: false });
+  cy.get("@continueButton").click();
+  cy.get("@passwordField")
+    .should("be.visible")
+    .clear()
+    .click()
+    .type(password, { log: false });
+  cy.get("@continueButton").click();
+
+  // Add a check to ensure login was successful, e.g., by verifying a dashboard element
+  cy.get("h1", { timeout: 10000 }).should("contain", "Dashboard");
+});
 //
 //
 // -- This will overwrite an existing command --
