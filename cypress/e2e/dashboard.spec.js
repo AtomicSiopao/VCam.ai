@@ -161,4 +161,14 @@ describe("VCam.ai Dashboard", () => {
       });
     });
   });
+
+  describe("Clear Session", () => {
+    beforeEach(() => {
+      dashboard.goToUserSettings();
+    });
+
+    it("Should clear current session and allow login on next run", () => {
+      login.destroySession();
+    });
+  });
 });

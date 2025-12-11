@@ -57,12 +57,16 @@ class Login {
     this.inputPassword().clickContinue();
   }
 
-  createSession() {
-    cy.session("newSessions", () => {
-      cy.visit("/");
-      this.login();
-      cy.visit("/");
-    });
+createSession() {
+  cy.session("newSession", () => {
+    cy.visit("/");
+    this.login();
+    cy.wait(2000); // wait for dashboard to load
+  });
+}
+
+  destroySession() {
+    Cypress.session.clearAllSavedSessions()
   }
 }
 

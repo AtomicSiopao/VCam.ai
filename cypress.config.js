@@ -53,6 +53,7 @@ module.exports = defineConfig({
   e2e: {
     experimentalMemoryManagement: true,
     experimentalSessionAndOrigin: true,
+    testIsolation: false, // Disable test isolation to maintain session across tests
     chromeWebSecurity: false,
     baseUrl: process.env.BASEURL,
     video: false,
