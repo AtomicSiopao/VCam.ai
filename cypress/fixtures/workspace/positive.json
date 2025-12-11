@@ -9,7 +9,7 @@
     "signOutOfOtherSessions": true
   },
   "workspace": {
-    "name": "Test Generated Workspace",
+    "name": "Test Workspace",
     "logoPath": "cypress/fixtures/aslogo.png",
     "members": [
       "user1@user.com",

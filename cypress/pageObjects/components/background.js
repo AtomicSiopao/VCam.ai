@@ -95,12 +95,12 @@ class BackgroundPage {
 
         if (afterCount > beforeCount) {
           return cy.wrap(afterCount);
-        } //else if (retries > 0) {
-        //cy.wait(1000);
-        //return cy.wrap(null).then(() => checkUntilIncreased(retries - 1)); // 👈 safe chaining
-        //} else {
-        //   throw new Error("Background count did not increase");
-        // }
+        } else if (retries > 0) {
+          cy.wait(1000);
+          return cy.wrap(null).then(() => checkUntilIncreased(retries - 1));
+        } else if (afterCount < beforeCount) {
+          return cy.log("no background added");
+        }
       });
     };
 
@@ -211,8 +211,8 @@ class BackgroundPage {
           this.invalidFileFormatMessage
             .contains("Invalid file. Please try again.")
             .should("be.visible");
-          // cy.wait(1000);
-          // this.cancelButton.should("be.visible").and('be.enabled').click();
+          cy.wait(1000);
+          this.cancelButton.should("be.visible").and("be.enabled").click();
           break;
         case "stock":
           this.clickStockPhotoByUnsplash().click();

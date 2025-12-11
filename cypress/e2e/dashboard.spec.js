@@ -44,7 +44,7 @@ describe("VCam.ai Dashboard", () => {
       background.deleteBackground(); // cleanup
     });
 
-    it.only("Should select a stock photo as background", () => {
+    it("Should select a stock photo as background", () => {
       background.addBackground("stock");
       background.setBackgroundStateMemberSettings(1);
       background.setBackgroundPermissionSettings(0);
@@ -99,37 +99,38 @@ describe("VCam.ai Dashboard", () => {
     });
 
     it("Should set new workspace name", () => {
-      cy.fixture("workspace/positive.json").then((workspace) => {
-        settings.renameWorkspace(workspace);
+      cy.fixture("workspace/positive.json").then((data) => {
+        let wsName = data.workspace.name;
+        settings.renameWorkspace(wsName);
       });
     });
 
-    // it.skip("Should leave workspace if account has more than 1 workspace", () => {
-    //   settings.leaveWorkspace();
-    // });
+    it.skip("Should leave workspace if account has more than 1 workspace", () => {
+      settings.leaveWorkspace();
+    });
 
-    // it.skip("[SKIP] Should delete workspace if account has more than 1 workspace", () => {
-    //   // CURRENTLY SKIPPED DUE TO NUMBER OF WORKSPACES AVAILABLE IN TEST ACCOUNT
-    //   settings.deleteWorkspace();
-    // });
+    it.skip("[SKIP] Should delete workspace if account has more than 1 workspace", () => {
+      // CURRENTLY SKIPPED DUE TO NUMBER OF WORKSPACES AVAILABLE IN TEST ACCOUNT
+      settings.deleteWorkspace();
+    });
 
-    // it.skip("[SKIP] Domain and Workspace Discovery - Current LIMITATION", () => {
-    //   // Workspace Discovery cannot be tested via automation
-    //   const domain = "marco.com";
-    //   const verificationEmail = "kopi@marco.com";
-    //   settings.addDomain(domain, "Invite only", verificationEmail); // type: Instant Access, Request to join, Invite only
-    // });
+    it.skip("[SKIP] Domain and Workspace Discovery - Current LIMITATION", () => {
+      // Workspace Discovery cannot be tested via automation
+      const domain = "marco.com";
+      const verificationEmail = "kopi@marco.com";
+      settings.addDomain(domain, "Invite only", verificationEmail); // type: Instant Access, Request to join, Invite only
+    });
   });
 
-  // describe("TEAM", () => {
-  //   beforeEach(() => {
-  //     dashboard.navigateTo("Team");
-  //   });
+  describe("TEAM", () => {
+    beforeEach(() => {
+      dashboard.navigateTo("Team");
+    });
 
-  //   it.skip("[SKIP] Should invite Users/Team Members via the Team Menu", () => {
-  //     team.inviteUsers(emails, "Member");
-  //   });
-  // });
+    it.skip("[SKIP] Should invite Users/Team Members via the Team Menu", () => {
+      team.inviteUsers(emails, "Member");
+    });
+  });
 
   describe("License Upgrade", () => {
     beforeEach(() => {

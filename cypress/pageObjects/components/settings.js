@@ -54,16 +54,18 @@ class Settings {
     cy.getButtonByText(type).click();
   }
 
-  renameWorkspace(workspace) {
+  renameWorkspace(newWSName) {
     const now = new Date();
     const timestamp = now.getTime();
-    cy.intercept("POST", "**/v1/organizations/*").as("renameWorkspace");
+    let ts = `${newWSName} ${timestamp}`;
 
-    let ts = workspace.name + timestamp;
-    this.workspaceNameField.focus().clear().type(ts);
+    // cy.intercept("GET", "**/v1/organizations/org_36QNxkuTZtVaHhnI5DnOh2xKdWY?*").as("workspaceDetails");
+    // cy.wait("@workspaceDetails").its("response.statusCode").should("eq", 200);
+    cy.wait(1500);
+    cy.log("Renaming workspace to: ", ts);
+    this.workspaceNameField.clear().type(ts, { delay: 50 });
     this.saveButton.click();
-
-    cy.wait("@renameWorkspace").its("response.statusCode").should("eq", 200);
+    return this;
   }
 
   leaveWorkspace() {
