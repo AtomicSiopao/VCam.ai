@@ -4,10 +4,13 @@ const onboarding = require("../pageObjects/pages/onboardingPage");
 
 describe("VCam.ai Onboarding", () => {
   beforeEach(() => {
-    cy.login(
-      Cypress.env("credentials").email,
-      Cypress.env("credentials").password
-    );
+    cy.session("loginSession", () => {
+      cy.login(
+        Cypress.env("credentials").email,
+        Cypress.env("credentials").password
+      );
+    });
+    cy.visit("/");
   });
 
   it("Should login and select 'For Personal Use' on the onboarding page", () => {

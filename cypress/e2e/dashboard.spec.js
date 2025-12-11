@@ -10,10 +10,13 @@ const now = new Date().toLocaleTimeString();
 
 describe("VCam.ai Dashboard", () => {
   beforeEach(() => {
-    cy.login(
-      Cypress.env("credentials").email,
-      Cypress.env("credentials").password
-    );
+    cy.session("loginSession", () => {
+      cy.login(
+        Cypress.env("credentials").email,
+        Cypress.env("credentials").password
+      );
+    });
+    dashboard.visit();
   });
 
   describe("DASHBOARD NAVIGATION", () => {

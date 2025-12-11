@@ -4,10 +4,13 @@ import dashboardPage from "../../pageObjects/pages/dashboardPage";
 describe("Session Management", () => {
   beforeEach(() => {
     // Assuming a custom login command exists and is configured
-    cy.login(
-      Cypress.env("credentials").email,
-      Cypress.env("credentials").password
-    );
+    cy.session("loginSession", () => {
+      cy.login(
+        Cypress.env("credentials").email,
+        Cypress.env("credentials").password
+      );
+    });
+    dashboardPage.visit();
     dashboardPage.navigateTo("Sessions");
   });
 
