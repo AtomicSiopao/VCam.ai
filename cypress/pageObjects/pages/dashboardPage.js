@@ -11,6 +11,10 @@ class DashboardPage {
       url: "https://dashboard.vcam.ai/app/nametags",
       header: "Name Tags",
     },
+    sessions: {
+      url: "https://dashboard.vcam.ai/app/sessions",
+      header: "Sessions",
+    },
     team: { url: "https://dashboard.vcam.ai/workspace/team", header: "Team" },
     billing: {
       url: "https://dashboard.vcam.ai/workspace/billing",
@@ -110,6 +114,9 @@ class DashboardPage {
   }
   goToNameTags() {
     return this.navigateTo("nametags");
+  }
+  goToSessions() {
+    return this.navigateTo("sessions");
   }
   goToTeam() {
     return this.navigateTo("team");

@@ -1,4 +1,3 @@
-const login = require("../pageObjects/components/login");
 const dashboard = require("../pageObjects/pages/dashboardPage");
 const background = require("../pageObjects/components/background");
 const logo = require("../pageObjects/components/logo");
@@ -11,9 +10,10 @@ const now = new Date().toLocaleTimeString();
 
 describe("VCam.ai Dashboard", () => {
   beforeEach(() => {
-    dashboard.visit();
-    login.login();
-    cy.ignoreReactError();
+    cy.login(
+      Cypress.env("credentials").email,
+      Cypress.env("credentials").password
+    );
   });
 
   describe("DASHBOARD NAVIGATION", () => {

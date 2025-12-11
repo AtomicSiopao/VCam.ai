@@ -11,8 +11,34 @@
 //
 // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
+
+Cypress.Commands.add("login", (email, password) => {
+  cy.visit("/"); // Adjust if your login page is not the root
+  cy.get("input#identifier-field", { timeout: 10000 }).as("emailAddressField");
+  cy.get('input[name="password"]').as("passwordField");
+  cy.get('button[data-localization-key="formButtonPrimary"]').as(
+    "continueButton"
+  );
+
+  cy.get("@emailAddressField").clear().click().type(email, { log: false });
+  cy.get("@continueButton").click();
+  cy.get("@passwordField")
+    .should("be.visible")
+    .clear()
+    .click()
+    .type(password, { log: false });
+  cy.get("@continueButton").click();
+
+  // Add a check to ensure login was successful, e.g., by verifying a dashboard element
+  cy.get("h1", { timeout: 10000 }).should("contain", "Dashboard");
+});
+
+Cypress.Commands.add("logout", () => {
+  // Replace with your application's logout logic
+  cy.get('[data-testid="user-avatar"]').click();
+  cy.contains("Logout").click();
+  cy.url().should("include", "/login");
+});
 // -- This is a child command --
 // Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
 //
@@ -25,18 +51,6 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 // cypress/support/commands.js
-Cypress.Commands.add("ignoreReactError", () => {
-  cy.on("uncaught:exception", (err) => {
-    if (
-      err.message.includes("Minified React error") ||
-      err.message.includes("React error #418") ||
-      err.message.includes('ResizeObserver loop')
-    ) {
-      return false;
-    }
-  });
-});
-
 Cypress.Commands.add("getButtonByText", (text) => {
   return cy.contains("button", text, { timeout: 10000 });
 });
