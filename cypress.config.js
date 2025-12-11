@@ -52,6 +52,7 @@ module.exports = defineConfig({
   numTestsKeptInMemory: 5,
   e2e: {
     experimentalMemoryManagement: true,
+    experimentalSessionAndOrigin: true,
     chromeWebSecurity: false,
     baseUrl: process.env.BASEURL,
     video: false,

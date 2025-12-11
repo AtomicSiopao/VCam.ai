@@ -30,8 +30,7 @@ class Login {
   }
 
   visit() {
-    cy.visit(Cypress.env.BASEURL);
-    return this;
+    return cy.visit(Cypress.env.BASEURL);
   }
 
   inputEmailAddress() {
@@ -56,6 +55,14 @@ class Login {
     this.inputEmailAddress().clickContinue();
     this.passwordField.should("be.visible");
     this.inputPassword().clickContinue();
+  }
+
+  createSession() {
+    cy.session("newSessions", () => {
+      cy.visit("/");
+      this.login();
+      cy.visit("/");
+    });
   }
 }
 

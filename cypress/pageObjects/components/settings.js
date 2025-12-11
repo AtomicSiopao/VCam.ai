@@ -10,7 +10,7 @@ class Settings {
   }
 
   get workspaceNameField() {
-    return cy.get('input[name="name"]');
+    return cy.get('input[name="name"]', { timeout: 10000 });
   }
 
   get workspaceName() {

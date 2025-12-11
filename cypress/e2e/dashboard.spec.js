@@ -7,12 +7,11 @@ const settings = require("../pageObjects/components/settings");
 const team = require("../pageObjects/components/team");
 const billing = require("../pageObjects/components/billing");
 const userSettings = require("../pageObjects/components/userSettings");
-const now = new Date().toLocaleTimeString();
 
 describe("VCam.ai Dashboard", () => {
   beforeEach(() => {
+    login.createSession();
     dashboard.visit();
-    login.login();
     cy.ignoreReactError();
   });
 
@@ -79,17 +78,18 @@ describe("VCam.ai Dashboard", () => {
     });
 
     it("Should setup a Name Tag", () => {
-      cy.fixture("users/positive.json")
-        .then((user) => {
+      cy.fixture("users/positive.json").then((user) => {
         user = user[1];
-          nametag.selectNameTagDesign(user.nametag.design);
-          nametag.setNameTag(user.name, user.nametag.position);
-          nametag.allowNameTagsInApp(user.nametag.allowNameTagsInApp);
-          nametag.allowMembersToToggleNameTag(user.nametag.allowMembersToToggleNameTag);
-          nametag.allowMembersToSetDetails(user.nametag.allowMembersToSetDetails);
-          nametag.allowMembersToSetDesign(user.nametag.allowMembersToSetDesign);
-          nametag.selectNameTagDesign(0); //Cleanup. Set to default design again.
-        });
+        nametag.selectNameTagDesign(user.nametag.design);
+        nametag.setNameTag(user.name, user.nametag.position);
+        nametag.allowNameTagsInApp(user.nametag.allowNameTagsInApp);
+        nametag.allowMembersToToggleNameTag(
+          user.nametag.allowMembersToToggleNameTag
+        );
+        nametag.allowMembersToSetDetails(user.nametag.allowMembersToSetDetails);
+        nametag.allowMembersToSetDesign(user.nametag.allowMembersToSetDesign);
+        nametag.selectNameTagDesign(0); //Cleanup. Set to default design again.
+      });
     });
   });
 
