@@ -55,12 +55,12 @@ class Settings {
   }
 
   renameWorkspace(workspace) {
-    const now = new Date();
-    const timestamp = now.getTime();
+    const timestamp = new Date().getTime();
+    const dynamicWorkspaceName = `${workspace}-${timestamp}`;
     cy.intercept("POST", "**/v1/organizations/*").as("renameWorkspace");
 
-    let ts = workspace.name + timestamp;
-    this.workspaceNameField.focus().clear().type(ts);
+    cy.log("Renaming workspace to: " + dynamicWorkspaceName);
+    this.workspaceNameField.focus().clear().type(dynamicWorkspaceName);
     this.saveButton.click();
 
     cy.wait("@renameWorkspace").its("response.statusCode").should("eq", 200);
