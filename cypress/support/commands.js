@@ -24,19 +24,6 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-// cypress/support/commands.js
-Cypress.Commands.add("ignoreReactError", () => {
-  cy.on("uncaught:exception", (err) => {
-    if (
-      err.message.includes("Minified React error") ||
-      err.message.includes("React error #418") ||
-      err.message.includes("ResizeObserver loop")
-    ) {
-      return false;
-    }
-  });
-});
-
 Cypress.Commands.add("getButtonByText", (text) => {
   return cy.contains("button", text, { timeout: 10000 });
 });
