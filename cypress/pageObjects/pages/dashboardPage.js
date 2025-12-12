@@ -59,6 +59,7 @@ class DashboardPage {
   // ====== ACTIONS ======
   visit() {
     cy.visit(this.sections.dashboard.url);
+    this.checkHeader("Dashboard");
     return this;
   }
 

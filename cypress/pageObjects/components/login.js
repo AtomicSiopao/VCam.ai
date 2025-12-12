@@ -1,3 +1,5 @@
+const dashboard = require("../pages/dashboardPage");
+
 class Login {
   get header() {
     return cy
@@ -34,7 +36,6 @@ class Login {
   }
 
   inputEmailAddress() {
-    cy.ignoreReactError();
     const { email } = Cypress.env("credentials");
     this.emailAddressField.clear().click().type(email, { log: false });
     return this;
@@ -61,7 +62,7 @@ createSession() {
   cy.session("newSession", () => {
     cy.visit("/");
     this.login();
-    cy.wait(2000); // wait for dashboard to load
+    dashboard.checkHeader("Dashboard");
   });
 }
 

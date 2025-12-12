@@ -12,7 +12,6 @@ describe("VCam.ai Dashboard", () => {
   beforeEach(() => {
     login.createSession();
     dashboard.visit();
-    cy.ignoreReactError();
   });
 
   describe("DASHBOARD NAVIGATION", () => {
