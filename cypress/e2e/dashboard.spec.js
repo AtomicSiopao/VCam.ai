@@ -10,9 +10,18 @@ const userSettings = require("../pageObjects/components/userSettings");
 
 describe("VCam.ai Dashboard", () => {
   beforeEach(() => {
-    login.createSession();
-    dashboard.visit();
-    cy.ignoreReactError();
+    cy.fixture("navigation/sections").then((sections) => {
+      dashboard.sections = sections;
+      login.createSession();
+      dashboard.visit();
+      cy.ignoreReactError();
+    });
+  });
+
+  describe("SESSION", () => {
+    it("Should check if created session is retained", () => {
+      login.createSession();
+    });
   });
 
   describe("DASHBOARD NAVIGATION", () => {
@@ -24,7 +33,6 @@ describe("VCam.ai Dashboard", () => {
       dashboard.navigateTo("Team");
       dashboard.navigateTo("Billing");
       dashboard.navigateTo("Settings");
-      dashboard.goToBillingFromDashboard();
     });
   });
 
@@ -134,7 +142,7 @@ describe("VCam.ai Dashboard", () => {
 
   describe("License Upgrade", () => {
     beforeEach(() => {
-      dashboard.goToBilling();
+      dashboard.navigateTo("Billing");
     });
 
     it("should upgrade license by redeeming license code", () => {

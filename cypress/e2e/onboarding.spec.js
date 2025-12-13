@@ -5,9 +5,12 @@ const onboarding = require("../pageObjects/pages/onboardingPage");
 
 describe("VCam.ai Onboarding", () => {
   beforeEach(() => {
-    dashboard.visit();
-    login.login();
-    cy.ignoreReactError();
+    cy.fixture("navigation/sections").then((sections) => {
+      dashboard.sections = sections;
+      dashboard.visit();
+      login.login();
+      cy.ignoreReactError();
+    });
   });
 
   it("Should login and select 'For Personal Use' on the onboarding page", () => {

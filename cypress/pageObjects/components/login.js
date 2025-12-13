@@ -1,3 +1,4 @@
+const dashboard = require("../pages/dashboardPage");
 class Login {
   get header() {
     return cy
@@ -30,7 +31,7 @@ class Login {
   }
 
   visit() {
-    return cy.visit(Cypress.env.BASEURL);
+    return cy.visit(Cypress.config("baseUrl"));
   }
 
   inputEmailAddress() {
@@ -57,16 +58,16 @@ class Login {
     this.inputPassword().clickContinue();
   }
 
-createSession() {
-  cy.session("newSession", () => {
-    cy.visit("/");
-    this.login();
-    cy.wait(2000); // wait for dashboard to load
-  });
-}
+  createSession() {
+    cy.session("newSession", () => {
+      cy.visit("/");
+      this.login();
+      dashboard.checkHeader("Dashboard");
+    });
+  }
 
   destroySession() {
-    Cypress.session.clearAllSavedSessions()
+    Cypress.session.clearAllSavedSessions();
   }
 }
 

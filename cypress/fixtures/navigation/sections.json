@@ -1,0 +1,31 @@
+{
+  "dashboard": { "url": "/", "header": "Dashboard" },
+  "backgrounds": {
+    "url": "/app/backgrounds",
+    "header": "Backgrounds"
+  },
+  "logos": { "url": "/app/logos", "header": "Logos" },
+  "nametags": {
+    "url": "/app/nametags",
+    "header": "Name Tags"
+  },
+  "team": { "url": "/workspace/team", "header": "Team" },
+  "billing": {
+    "url": "/workspace/billing",
+    "header": "Billing"
+  },
+  "settings": {
+    "url": "/workspace/settings",
+    "header": "Settings"
+  },
+  "userSettings": {
+    "url": "/settings",
+    "header": "Personal Settings",
+    "linkText": "Profile Settings",
+    "global": true
+  },
+  "deployment": {
+    "url": "/workspace/deployment",
+    "header": "Deployment"
+  }
+}
