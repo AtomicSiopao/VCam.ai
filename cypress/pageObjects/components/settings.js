@@ -56,7 +56,17 @@ class Settings {
 
   renameWorkspace(newWSName) {
     const now = new Date();
-    const timestamp = now.getTime();
+    const pad = (n) => String(n).padStart(2, "0");
+    const timestamp =
+      String(now.getFullYear()).slice(-2) +
+      "." +
+      pad(now.getMonth() + 1) +
+      "." +
+      pad(now.getDate()) +
+      "." +
+      pad(now.getHours()) +
+      pad(now.getMinutes()) +
+      pad(now.getSeconds());
     let ts = `${newWSName} ${timestamp}`;
 
     // cy.intercept("GET", "**/v1/organizations/org_36QNxkuTZtVaHhnI5DnOh2xKdWY?*").as("workspaceDetails");
