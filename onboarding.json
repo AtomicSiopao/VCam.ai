@@ -1,0 +1,106 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-12-19T09:49:41.170Z",
+    "end": "2025-12-19T09:49:54.646Z",
+    "duration": 13476,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "b4b1862c-65e4-455f-a950-6c4fa19f483e",
+      "title": "",
+      "fullFile": "cypress/e2e/onboarding.spec.js",
+      "file": "cypress/e2e/onboarding.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "150390c6-7658-4697-9ac8-53f0f64ae9c9",
+          "title": "VCam.ai Onboarding",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Should login and select 'For Personal Use' on the onboarding page",
+              "fullTitle": "VCam.ai Onboarding Should login and select 'For Personal Use' on the onboarding page",
+              "timedOut": null,
+              "duration": 13347,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "onboarding.setForPersonalUse();\ndashboard.navigateTo(\"Settings\");\nsettings.deleteWorkspace();\nonboarding.setForPersonalUse(); // SETUP",
+              "err": {},
+              "uuid": "97b6b5dd-01ac-4379-a2e3-be641f0c7ddb",
+              "parentUUID": "150390c6-7658-4697-9ac8-53f0f64ae9c9",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "97b6b5dd-01ac-4379-a2e3-be641f0c7ddb"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 13347,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "[name]",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true,
+        "reportFilename": "[name]"
+      },
+      "version": "6.3.2"
+    }
+  }
+}
