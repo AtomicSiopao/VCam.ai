@@ -1,0 +1,130 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2025-12-19T05:40:49.029Z",
+    "end": "2025-12-19T05:40:49.314Z",
+    "duration": 285,
+    "testsRegistered": 2,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 1,
+    "hasSkipped": true
+  },
+  "results": [
+    {
+      "uuid": "7d7d451c-5b6b-4cf7-84de-4b1be4d2a8a7",
+      "title": "",
+      "fullFile": "cypress/e2e/onboarding.spec.js",
+      "file": "cypress/e2e/onboarding.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "8056f107-e873-4b51-acc3-762481140cf2",
+          "title": "VCam.ai Onboarding",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Should login and select 'For Personal Use' on the onboarding page",
+              "fullTitle": "VCam.ai Onboarding Should login and select 'For Personal Use' on the onboarding page",
+              "timedOut": null,
+              "duration": 233,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "onboarding.setForPersonalUse();\ndashboard.goToSettings();\nsettings.deleteWorkspace();",
+              "err": {
+                "message": "CypressError: `cy.visit()` failed trying to load:\n\n/\n\nWe failed looking for this file at the path:\n\n/home/runner/work/VCam.ai/VCam.ai/\n\nThe internal Cypress web server responded with:\n\n  > 404: Not Found\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `VCam.ai Onboarding`",
+                "estack": "CypressError: `cy.visit()` failed trying to load:\n\n/\n\nWe failed looking for this file at the path:\n\n/home/runner/work/VCam.ai/VCam.ai/\n\nThe internal Cypress web server responded with:\n\n  > 404: Not Found\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `VCam.ai Onboarding`\n    at <unknown> (http://localhost:41507/__cypress/runner/cypress_runner.js:134626:76)\n    at visitFailedByErr (http://localhost:41507/__cypress/runner/cypress_runner.js:134216:12)\n    at <unknown> (http://localhost:41507/__cypress/runner/cypress_runner.js:134609:13)\n    at tryCatcher (http://localhost:41507/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise._settlePromiseFromHandler (http://localhost:41507/__cypress/runner/cypress_runner.js:1489:31)\n    at Promise._settlePromise (http://localhost:41507/__cypress/runner/cypress_runner.js:1546:18)\n    at Promise._settlePromise0 (http://localhost:41507/__cypress/runner/cypress_runner.js:1591:10)\n    at Promise._settlePromises (http://localhost:41507/__cypress/runner/cypress_runner.js:1667:18)\n    at _drainQueueStep (http://localhost:41507/__cypress/runner/cypress_runner.js:2377:12)\n    at _drainQueue (http://localhost:41507/__cypress/runner/cypress_runner.js:2370:9)\n    at Async._drainQueues (http://localhost:41507/__cypress/runner/cypress_runner.js:2386:5)\n    at Async.drainQueues (http://localhost:41507/__cypress/runner/cypress_runner.js:2256:14)\nFrom Your Spec Code:\n    at DashboardPage.visit (webpack://vcamai/./cypress/pageObjects/pages/dashboardPage.js:27:7)\n    at Context.eval (webpack://vcamai/./cypress/e2e/onboarding.spec.js:10:16)\n    at getRet (http://localhost:41507/__cypress/runner/cypress_runner.js:122460:20)\n    at tryCatcher (http://localhost:41507/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise.attempt.Promise.try (http://localhost:41507/__cypress/runner/cypress_runner.js:4285:29)\n    at Context.thenFn (http://localhost:41507/__cypress/runner/cypress_runner.js:122471:66)\n    at Context.then (http://localhost:41507/__cypress/runner/cypress_runner.js:122722:21)\n    at wrapped (http://localhost:41507/__cypress/runner/cypress_runner.js:145818:19)",
+                "diff": null
+              },
+              "uuid": "c35ea1af-642e-4a3c-b77d-fb87eea78473",
+              "parentUUID": "8056f107-e873-4b51-acc3-762481140cf2",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Should select 'for Team Use' on the onboarding page",
+              "fullTitle": "VCam.ai Onboarding Should select 'for Team Use' on the onboarding page",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "onboarding.setForTeamUse();\ncy.fixture(\"workspace/positive.json\").then(data => {\n  cy.fixture(\"users/positive.json\").then(users => {\n    onboarding.setupTeamWorkspace(data.workspace.name, users);\n    dashboard.navigateTo(\"Settings\");\n    settings.workspaceName.should(\"eq\", data.workspace.name);\n  });\n});",
+              "err": {},
+              "uuid": "64d1e2f7-1f3d-4288-93a4-188914ffbcd6",
+              "parentUUID": "8056f107-e873-4b51-acc3-762481140cf2",
+              "isHook": false,
+              "skipped": true
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "c35ea1af-642e-4a3c-b77d-fb87eea78473"
+          ],
+          "pending": [],
+          "skipped": [
+            "64d1e2f7-1f3d-4288-93a4-188914ffbcd6"
+          ],
+          "duration": 233,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "[name]",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true,
+        "reportFilename": "[name]"
+      },
+      "version": "6.3.2"
+    }
+  }
+}
