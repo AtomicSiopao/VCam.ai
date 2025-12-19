@@ -5,9 +5,9 @@
     "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2025-12-19T09:49:41.170Z",
-    "end": "2025-12-19T09:49:54.646Z",
-    "duration": 13476,
+    "start": "2025-12-19T09:55:04.875Z",
+    "end": "2025-12-19T09:55:19.915Z",
+    "duration": 15040,
     "testsRegistered": 1,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "b4b1862c-65e4-455f-a950-6c4fa19f483e",
+      "uuid": "127cbabd-f372-4500-9929-44d9232eca0d",
       "title": "",
       "fullFile": "cypress/e2e/onboarding.spec.js",
       "file": "cypress/e2e/onboarding.spec.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "150390c6-7658-4697-9ac8-53f0f64ae9c9",
+          "uuid": "92283248-deb2-4223-b4a5-46c1ba4f53ac",
           "title": "VCam.ai Onboarding",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "Should login and select 'For Personal Use' on the onboarding page",
               "fullTitle": "VCam.ai Onboarding Should login and select 'For Personal Use' on the onboarding page",
               "timedOut": null,
-              "duration": 13347,
+              "duration": 14953,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -47,20 +47,20 @@
               "context": null,
               "code": "onboarding.setForPersonalUse();\ndashboard.navigateTo(\"Settings\");\nsettings.deleteWorkspace();\nonboarding.setForPersonalUse(); // SETUP",
               "err": {},
-              "uuid": "97b6b5dd-01ac-4379-a2e3-be641f0c7ddb",
-              "parentUUID": "150390c6-7658-4697-9ac8-53f0f64ae9c9",
+              "uuid": "793d1cd4-075d-455b-9bbf-a3350071eefc",
+              "parentUUID": "92283248-deb2-4223-b4a5-46c1ba4f53ac",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "97b6b5dd-01ac-4379-a2e3-be641f0c7ddb"
+            "793d1cd4-075d-455b-9bbf-a3350071eefc"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 13347,
+          "duration": 14953,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
