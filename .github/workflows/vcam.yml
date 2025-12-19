@@ -5,6 +5,8 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 jobs:
   cypress-tests:
@@ -18,9 +20,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-
-      - name: Install pnpm
-        run: npm install -g pnpm
+          cache: "pnpm"
 
       - name: Install dependencies
         run: pnpm install
@@ -28,30 +28,12 @@ jobs:
       - name: Clear old Cypress reports
         run: rm -rf cypress/reports || true
 
-      - name: Run Cypress tests (xvfb)
+      - name: Run Cypress tests
         env:
-          DASHBOARD_URL: ${{ secrets.BASEURL }}
+          BASEURL: ${{ secrets.BASEURL }}
           VCAM_EMAIL: ${{ secrets.VCAM_EMAIL }}
           VCAM_PASSWORD: ${{ secrets.VCAM_PASSWORD }}
-        run: |
-          npx xvfb-maybe pnpm cypress run || true
-
-      - name: Check for mochawesome JSON files
-        id: check_reports
-        run: |
-          if ls cypress/reports/**/*.json 1> /dev/null 2>&1; then
-            echo "reports_exist=true" >> $GITHUB_OUTPUT
-          else
-            echo "reports_exist=false" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Merge mochawesome reports
-        if: steps.check_reports.outputs.reports_exist == 'true'
-        run: pnpm mochawesome-merge cypress/reports/**/*.json > cypress/reports/report.json
-
-      - name: Generate final HTML report
-        if: steps.check_reports.outputs.reports_exist == 'true'
-        run: pnpm marge cypress/reports/report.json --reportDir cypress/reports --inline
+        run: pnpm test || true
 
       - name: Prepare public folder for Pages
         run: |
@@ -69,6 +51,6 @@ jobs:
         if: always()
         uses: peaceiris/actions-gh-pages@v3
         with:
-          personal_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
           publish_branch: gh-pages
