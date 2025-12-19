@@ -5,9 +5,9 @@
     "passes": 0,
     "pending": 0,
     "failures": 1,
-    "start": "2025-12-19T08:51:59.402Z",
-    "end": "2025-12-19T08:51:59.756Z",
-    "duration": 354,
+    "start": "2025-12-19T09:25:41.887Z",
+    "end": "2025-12-19T09:25:42.265Z",
+    "duration": 378,
     "testsRegistered": 18,
     "passPercent": 0,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "b1788b59-5747-457f-9453-5127957e0ba7",
+      "uuid": "b633544f-f0e6-48e3-b6ea-c78fffbf33ab",
       "title": "",
       "fullFile": "cypress/e2e/dashboard.spec.js",
       "file": "cypress/e2e/dashboard.spec.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "9af93d97-06fb-46ce-babc-653de36105a5",
+          "uuid": "dc632ccc-649e-49f4-96e6-f5ef76b72ccc",
           "title": "VCam.ai Dashboard",
           "fullFile": "",
           "file": "",
@@ -36,7 +36,7 @@
           "tests": [],
           "suites": [
             {
-              "uuid": "4e91ab4b-0765-4f59-b85f-3cfe3af26165",
+              "uuid": "d28a4262-e483-468c-ac92-050346160b11",
               "title": "SESSION",
               "fullFile": "",
               "file": "",
@@ -47,7 +47,7 @@
                   "title": "Should check if created session is retained",
                   "fullTitle": "VCam.ai Dashboard SESSION Should check if created session is retained",
                   "timedOut": null,
-                  "duration": 311,
+                  "duration": 323,
                   "state": "failed",
                   "speed": null,
                   "pass": false,
@@ -57,11 +57,11 @@
                   "code": "login.createSession();",
                   "err": {
                     "message": "CypressError: `cy.visit()` failed trying to load:\n\n/\n\nWe failed looking for this file at the path:\n\n/home/runner/work/VCam.ai/VCam.ai/\n\nThe internal Cypress web server responded with:\n\n  > 404: Not Found\n\nThis error occurred while creating the session. Because the session setup failed, we failed the test.\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `VCam.ai Dashboard`",
-                    "estack": "CypressError: `cy.visit()` failed trying to load:\n\n/\n\nWe failed looking for this file at the path:\n\n/home/runner/work/VCam.ai/VCam.ai/\n\nThe internal Cypress web server responded with:\n\n  > 404: Not Found\n\nThis error occurred while creating the session. Because the session setup failed, we failed the test.\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `VCam.ai Dashboard`\n    at <unknown> (http://localhost:32893/__cypress/runner/cypress_runner.js:134626:76)\n    at visitFailedByErr (http://localhost:32893/__cypress/runner/cypress_runner.js:134216:12)\n    at <unknown> (http://localhost:32893/__cypress/runner/cypress_runner.js:134609:13)\n    at tryCatcher (http://localhost:32893/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise._settlePromiseFromHandler (http://localhost:32893/__cypress/runner/cypress_runner.js:1489:31)\n    at Promise._settlePromise (http://localhost:32893/__cypress/runner/cypress_runner.js:1546:18)\n    at Promise._settlePromise0 (http://localhost:32893/__cypress/runner/cypress_runner.js:1591:10)\n    at Promise._settlePromises (http://localhost:32893/__cypress/runner/cypress_runner.js:1667:18)\n    at _drainQueueStep (http://localhost:32893/__cypress/runner/cypress_runner.js:2377:12)\n    at _drainQueue (http://localhost:32893/__cypress/runner/cypress_runner.js:2370:9)\n    at Async._drainQueues (http://localhost:32893/__cypress/runner/cypress_runner.js:2386:5)\n    at Async.drainQueues (http://localhost:32893/__cypress/runner/cypress_runner.js:2256:14)\nFrom Your Spec Code:\n    at Login.login (webpack://vcamai/./cypress/pageObjects/components/login.js:56:7)\n    at Object.eval [as setup] (webpack://vcamai/./cypress/pageObjects/components/login.js:64:11)\n    at Context.<anonymous> (http://localhost:32893/__cypress/runner/cypress_runner.js:136153:38)\n    at getRet (http://localhost:32893/__cypress/runner/cypress_runner.js:122460:20)\n    at tryCatcher (http://localhost:32893/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise.attempt.Promise.try (http://localhost:32893/__cypress/runner/cypress_runner.js:4285:29)\n    at Context.thenFn (http://localhost:32893/__cypress/runner/cypress_runner.js:122471:66)\n    at Context.then (http://localhost:32893/__cypress/runner/cypress_runner.js:122722:21)\n    at wrapped (http://localhost:32893/__cypress/runner/cypress_runner.js:145818:19)",
+                    "estack": "CypressError: `cy.visit()` failed trying to load:\n\n/\n\nWe failed looking for this file at the path:\n\n/home/runner/work/VCam.ai/VCam.ai/\n\nThe internal Cypress web server responded with:\n\n  > 404: Not Found\n\nThis error occurred while creating the session. Because the session setup failed, we failed the test.\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `VCam.ai Dashboard`\n    at <unknown> (http://localhost:37231/__cypress/runner/cypress_runner.js:134626:76)\n    at visitFailedByErr (http://localhost:37231/__cypress/runner/cypress_runner.js:134216:12)\n    at <unknown> (http://localhost:37231/__cypress/runner/cypress_runner.js:134609:13)\n    at tryCatcher (http://localhost:37231/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise._settlePromiseFromHandler (http://localhost:37231/__cypress/runner/cypress_runner.js:1489:31)\n    at Promise._settlePromise (http://localhost:37231/__cypress/runner/cypress_runner.js:1546:18)\n    at Promise._settlePromise0 (http://localhost:37231/__cypress/runner/cypress_runner.js:1591:10)\n    at Promise._settlePromises (http://localhost:37231/__cypress/runner/cypress_runner.js:1667:18)\n    at _drainQueueStep (http://localhost:37231/__cypress/runner/cypress_runner.js:2377:12)\n    at _drainQueue (http://localhost:37231/__cypress/runner/cypress_runner.js:2370:9)\n    at Async._drainQueues (http://localhost:37231/__cypress/runner/cypress_runner.js:2386:5)\n    at Async.drainQueues (http://localhost:37231/__cypress/runner/cypress_runner.js:2256:14)\nFrom Your Spec Code:\n    at Login.login (webpack://vcamai/./cypress/pageObjects/components/login.js:56:7)\n    at Object.eval [as setup] (webpack://vcamai/./cypress/pageObjects/components/login.js:64:11)\n    at Context.<anonymous> (http://localhost:37231/__cypress/runner/cypress_runner.js:136153:38)\n    at getRet (http://localhost:37231/__cypress/runner/cypress_runner.js:122460:20)\n    at tryCatcher (http://localhost:37231/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise.attempt.Promise.try (http://localhost:37231/__cypress/runner/cypress_runner.js:4285:29)\n    at Context.thenFn (http://localhost:37231/__cypress/runner/cypress_runner.js:122471:66)\n    at Context.then (http://localhost:37231/__cypress/runner/cypress_runner.js:122722:21)\n    at wrapped (http://localhost:37231/__cypress/runner/cypress_runner.js:145818:19)",
                     "diff": null
                   },
-                  "uuid": "fe5ca751-2802-4056-afb8-33aaebfce660",
-                  "parentUUID": "4e91ab4b-0765-4f59-b85f-3cfe3af26165",
+                  "uuid": "88cb6840-bcc4-45f8-8994-2dd397ee6d72",
+                  "parentUUID": "d28a4262-e483-468c-ac92-050346160b11",
                   "isHook": false,
                   "skipped": false
                 }
@@ -69,17 +69,17 @@
               "suites": [],
               "passes": [],
               "failures": [
-                "fe5ca751-2802-4056-afb8-33aaebfce660"
+                "88cb6840-bcc4-45f8-8994-2dd397ee6d72"
               ],
               "pending": [],
               "skipped": [],
-              "duration": 311,
+              "duration": 323,
               "root": false,
               "rootEmpty": false,
               "_timeout": 2000
             },
             {
-              "uuid": "ce7f2713-f984-4b04-bc14-cd96d8dd8695",
+              "uuid": "644b2437-a3e3-4ba1-9371-cf3020fc41b1",
               "title": "DASHBOARD NAVIGATION",
               "fullFile": "",
               "file": "",
@@ -99,7 +99,7 @@
                   "context": null,
                   "code": "//dashboard.navigateTo(\"Dashboard\");\ndashboard.navigateTo(\"Backgrounds\");\ndashboard.navigateTo(\"Logos\");\ndashboard.navigateTo(\"Name Tags\");\ndashboard.navigateTo(\"Team\");\ndashboard.navigateTo(\"Billing\");\ndashboard.navigateTo(\"Settings\");",
                   "err": {},
-                  "uuid": "932d2826-c270-4ab6-8a51-abab1758aef5",
+                  "uuid": "c2455344-4e46-4767-b6de-3752c1912951",
                   "parentUUID": null,
                   "isHook": false,
                   "skipped": true
@@ -110,7 +110,7 @@
               "failures": [],
               "pending": [],
               "skipped": [
-                "932d2826-c270-4ab6-8a51-abab1758aef5"
+                "c2455344-4e46-4767-b6de-3752c1912951"
               ],
               "duration": 0,
               "root": false,
@@ -118,7 +118,7 @@
               "_timeout": 2000
             },
             {
-              "uuid": "27485bbd-456f-4125-bfac-5f2fe076fa28",
+              "uuid": "1297b88a-8279-45aa-b293-773a949ed917",
               "title": "BACKGROUNDS",
               "fullFile": "",
               "file": "",
@@ -138,7 +138,7 @@
                   "context": null,
                   "code": "background.addBackground(\"image\");\nbackground.deleteBackground(); // cleanup",
                   "err": {},
-                  "uuid": "69565d6a-f8c7-4737-8780-42e9bc7760d6",
+                  "uuid": "7b77cc6f-7e91-497e-b056-c0308cc5774f",
                   "parentUUID": null,
                   "isHook": false,
                   "skipped": true
@@ -156,7 +156,7 @@
                   "context": null,
                   "code": "background.addBackground(\"video\");\nbackground.deleteBackground(); // cleanup",
                   "err": {},
-                  "uuid": "00668790-5f6c-464d-bc9c-adc2955c2b65",
+                  "uuid": "014d0996-99c8-4a44-ba6f-de0aa8fc3d5b",
                   "parentUUID": null,
                   "isHook": false,
                   "skipped": true
@@ -174,7 +174,7 @@
                   "context": null,
                   "code": "background.addBackground(\"stock\");\nbackground.setBackgroundStateMemberSettings(1);\nbackground.setBackgroundPermissionSettings(0);\nbackground.deleteBackground(); // cleanup",
                   "err": {},
-                  "uuid": "f54a3153-72e2-4b7e-9ffd-b6da8f26bf81",
+                  "uuid": "f1c11ed1-3b0e-4a05-baa0-ec48330df882",
                   "parentUUID": null,
                   "isHook": false,
                   "skipped": true
@@ -192,7 +192,7 @@
                   "context": null,
                   "code": "background.addBackground(\"unsupported\");",
                   "err": {},
-                  "uuid": "e2b12b57-69bc-4762-8b00-88ac8978ed82",
+                  "uuid": "ec6b74f1-f1d0-4f01-9a0c-a490cf51f83f",
                   "parentUUID": null,
                   "isHook": false,
                   "skipped": true
@@ -203,10 +203,10 @@
               "failures": [],
               "pending": [],
               "skipped": [
-                "69565d6a-f8c7-4737-8780-42e9bc7760d6",
-                "00668790-5f6c-464d-bc9c-adc2955c2b65",
-                "f54a3153-72e2-4b7e-9ffd-b6da8f26bf81",
-                "e2b12b57-69bc-4762-8b00-88ac8978ed82"
+                "7b77cc6f-7e91-497e-b056-c0308cc5774f",
+                "014d0996-99c8-4a44-ba6f-de0aa8fc3d5b",
+                "f1c11ed1-3b0e-4a05-baa0-ec48330df882",
+                "ec6b74f1-f1d0-4f01-9a0c-a490cf51f83f"
               ],
               "duration": 0,
               "root": false,
@@ -214,7 +214,7 @@
               "_timeout": 2000
             },
             {
-              "uuid": "19e78c15-acdc-4562-9590-bf47eaa7ac58",
+              "uuid": "8fafc0ca-5bde-4921-a0cb-2a5ae1a09791",
               "title": "LOGOS",
               "fullFile": "",
               "file": "",
@@ -234,7 +234,7 @@
                   "context": null,
                   "code": "logo.addLogoByImageUpload();\nlogo.deleteLogo(); // cleanup",
                   "err": {},
-                  "uuid": "58d21822-a382-4fd8-b991-f727854101bd",
+                  "uuid": "a8a137a4-f8c7-4c5a-a65b-8359102681de",
                   "parentUUID": null,
                   "isHook": false,
                   "skipped": true
@@ -252,7 +252,7 @@
                   "context": null,
                   "code": "logo.addLogoByVideoUpload();\nlogo.setLogoPermissionSettings(1);\nlogo.deleteLogo(); // cleanup",
                   "err": {},
-                  "uuid": "cfdc9635-7213-40fd-a191-c91944cba285",
+                  "uuid": "f56aed95-3254-4c98-bfd1-c48dc0eb28a6",
                   "parentUUID": null,
                   "isHook": false,
                   "skipped": true
@@ -263,8 +263,8 @@
               "failures": [],
               "pending": [],
               "skipped": [
-                "58d21822-a382-4fd8-b991-f727854101bd",
-                "cfdc9635-7213-40fd-a191-c91944cba285"
+                "a8a137a4-f8c7-4c5a-a65b-8359102681de",
+                "f56aed95-3254-4c98-bfd1-c48dc0eb28a6"
               ],
               "duration": 0,
               "root": false,
@@ -272,7 +272,7 @@
               "_timeout": 2000
             },
             {
-              "uuid": "8e91593f-60c9-4016-b658-db65af1594f5",
+              "uuid": "b1fe9904-66d3-45eb-a860-2cbcc65f5482",
               "title": "NAME TAGS",
               "fullFile": "",
               "file": "",
@@ -292,7 +292,7 @@
                   "context": null,
                   "code": "cy.fixture(\"users/positive.json\").then(user => {\n  user = user[1];\n  nametag.selectNameTagDesign(user.nametag.design);\n  nametag.setNameTag(user.name, user.nametag.position);\n  nametag.allowNameTagsInApp(user.nametag.allowNameTagsInApp);\n  nametag.allowMembersToToggleNameTag(user.nametag.allowMembersToToggleNameTag);\n  nametag.allowMembersToSetDetails(user.nametag.allowMembersToSetDetails);\n  nametag.allowMembersToSetDesign(user.nametag.allowMembersToSetDesign);\n  nametag.selectNameTagDesign(0); //Cleanup. Set to default design again.\n});",
                   "err": {},
-                  "uuid": "b4bf178a-daa0-4164-9deb-8f560c19abb8",
+                  "uuid": "f0af9686-f02d-4bca-ab8c-f269546fdc90",
                   "parentUUID": null,
                   "isHook": false,
                   "skipped": true
@@ -303,7 +303,7 @@
               "failures": [],
               "pending": [],
               "skipped": [
-                "b4bf178a-daa0-4164-9deb-8f560c19abb8"
+                "f0af9686-f02d-4bca-ab8c-f269546fdc90"
               ],
               "duration": 0,
               "root": false,
@@ -311,7 +311,7 @@
               "_timeout": 2000
             },
             {
-              "uuid": "c2e5810c-a9ed-49fb-8ba4-f27a805c2dfe",
+              "uuid": "3448f189-3a45-4adc-bcf0-af9edb2744d9",
               "title": "SETTINGS",
               "fullFile": "",
               "file": "",
@@ -331,7 +331,7 @@
                   "context": null,
                   "code": "cy.fixture(\"workspace/positive.json\").then(data => {\n  let wsName = data.workspace.name;\n  settings.renameWorkspace(wsName);\n});",
                   "err": {},
-                  "uuid": "b7b56d06-02b0-4d03-8a87-fac420c2fcea",
+                  "uuid": "fa55a486-d422-4f5c-9843-7c418cb4702f",
                   "parentUUID": null,
                   "isHook": false,
                   "skipped": true
@@ -349,7 +349,7 @@
                   "context": null,
                   "code": "settings.leaveWorkspace();",
                   "err": {},
-                  "uuid": "7ac1ee57-bced-445a-81b5-5ff2ca8665d8",
+                  "uuid": "f2c86e1e-0dc3-45c7-b330-de9dab3bd614",
                   "parentUUID": null,
                   "isHook": false,
                   "skipped": true
@@ -367,7 +367,7 @@
                   "context": null,
                   "code": "// CURRENTLY SKIPPED DUE TO NUMBER OF WORKSPACES AVAILABLE IN TEST ACCOUNT\nsettings.deleteWorkspace();",
                   "err": {},
-                  "uuid": "2eed580a-fa25-4c93-89de-903da77a9b33",
+                  "uuid": "cd12fd9f-7e5a-4bfa-8cf6-3abea518ebd2",
                   "parentUUID": null,
                   "isHook": false,
                   "skipped": true
@@ -385,7 +385,7 @@
                   "context": null,
                   "code": "// Workspace Discovery cannot be tested via automation\nconst domain = \"marco.com\";\nconst verificationEmail = \"kopi@marco.com\";\nsettings.addDomain(domain, \"Invite only\", verificationEmail); // type: Instant Access, Request to join, Invite only",
                   "err": {},
-                  "uuid": "a7277c99-5062-4fc9-a84a-68d50594d2b3",
+                  "uuid": "3c2e009e-c7a7-409e-bffc-07ca6f740cc2",
                   "parentUUID": null,
                   "isHook": false,
                   "skipped": true
@@ -396,10 +396,10 @@
               "failures": [],
               "pending": [],
               "skipped": [
-                "b7b56d06-02b0-4d03-8a87-fac420c2fcea",
-                "7ac1ee57-bced-445a-81b5-5ff2ca8665d8",
-                "2eed580a-fa25-4c93-89de-903da77a9b33",
-                "a7277c99-5062-4fc9-a84a-68d50594d2b3"
+                "fa55a486-d422-4f5c-9843-7c418cb4702f",
+                "f2c86e1e-0dc3-45c7-b330-de9dab3bd614",
+                "cd12fd9f-7e5a-4bfa-8cf6-3abea518ebd2",
+                "3c2e009e-c7a7-409e-bffc-07ca6f740cc2"
               ],
               "duration": 0,
               "root": false,
@@ -407,7 +407,7 @@
               "_timeout": 2000
             },
             {
-              "uuid": "b4260467-ab59-4346-97fe-03f73460f8a4",
+              "uuid": "28567091-a788-44b9-be7f-2f72d2e3c6f6",
               "title": "TEAM",
               "fullFile": "",
               "file": "",
@@ -427,7 +427,7 @@
                   "context": null,
                   "code": "team.inviteUsers(emails, \"Member\");",
                   "err": {},
-                  "uuid": "e0b07046-d1fd-4408-af82-189a935038c3",
+                  "uuid": "0f4f6c35-da03-4ea7-b17c-b55d9d4ed47d",
                   "parentUUID": null,
                   "isHook": false,
                   "skipped": true
@@ -438,7 +438,7 @@
               "failures": [],
               "pending": [],
               "skipped": [
-                "e0b07046-d1fd-4408-af82-189a935038c3"
+                "0f4f6c35-da03-4ea7-b17c-b55d9d4ed47d"
               ],
               "duration": 0,
               "root": false,
@@ -446,7 +446,7 @@
               "_timeout": 2000
             },
             {
-              "uuid": "f33b980b-b139-440d-aae8-6aada4aed5ad",
+              "uuid": "b603f8bc-2384-4cf3-b74c-ad74f072a9f3",
               "title": "License Upgrade",
               "fullFile": "",
               "file": "",
@@ -466,7 +466,7 @@
                   "context": null,
                   "code": "cy.fixture(\"workspace/positive\").then(data => {\n  billing.upgradeLicense(data.workspace.code);\n});",
                   "err": {},
-                  "uuid": "86952181-e2a4-4e34-b7cb-dad351b39cb2",
+                  "uuid": "1e0ad3d0-2806-4b2d-909d-fd7940f1341a",
                   "parentUUID": null,
                   "isHook": false,
                   "skipped": true
@@ -477,7 +477,7 @@
               "failures": [],
               "pending": [],
               "skipped": [
-                "86952181-e2a4-4e34-b7cb-dad351b39cb2"
+                "1e0ad3d0-2806-4b2d-909d-fd7940f1341a"
               ],
               "duration": 0,
               "root": false,
@@ -485,7 +485,7 @@
               "_timeout": 2000
             },
             {
-              "uuid": "8dc37a4f-8350-434d-985a-1b5258eec132",
+              "uuid": "25775a7b-ea0f-4fdd-bf4a-897659069e53",
               "title": "User Profile",
               "fullFile": "",
               "file": "",
@@ -505,7 +505,7 @@
                   "context": null,
                   "code": "cy.fixture(\"workspace/positive\").then(data => {\n  userSettings.updateUserInfo(data.user.firstName, data.user.lastName);\n});",
                   "err": {},
-                  "uuid": "9e911b12-8079-433d-933c-c5d46ee6acee",
+                  "uuid": "50fbfbb5-23fb-46c2-b6b8-28a4598b63c0",
                   "parentUUID": null,
                   "isHook": false,
                   "skipped": true
@@ -523,7 +523,7 @@
                   "context": null,
                   "code": "cy.fixture(\"workspace/edge_cases\").then(data => {\n  userSettings.updateUserInfo(data.user.firstName, data.user.lastName);\n});",
                   "err": {},
-                  "uuid": "3fa9436a-ee5a-4bfa-bf22-90d980ef8ae1",
+                  "uuid": "dd4e758f-4297-4bac-8bca-b059aaa94fe8",
                   "parentUUID": null,
                   "isHook": false,
                   "skipped": true
@@ -534,8 +534,8 @@
               "failures": [],
               "pending": [],
               "skipped": [
-                "9e911b12-8079-433d-933c-c5d46ee6acee",
-                "3fa9436a-ee5a-4bfa-bf22-90d980ef8ae1"
+                "50fbfbb5-23fb-46c2-b6b8-28a4598b63c0",
+                "dd4e758f-4297-4bac-8bca-b059aaa94fe8"
               ],
               "duration": 0,
               "root": false,
@@ -543,7 +543,7 @@
               "_timeout": 2000
             },
             {
-              "uuid": "8e943bfa-76e1-4859-91e1-04828586f621",
+              "uuid": "0f967a84-4315-4c74-9c3e-7e2e89d87ced",
               "title": "Clear Session",
               "fullFile": "",
               "file": "",
@@ -563,7 +563,7 @@
                   "context": null,
                   "code": "login.destroySession();",
                   "err": {},
-                  "uuid": "edc79bff-9d5d-46b6-b30e-7751d56f30fb",
+                  "uuid": "5af68ac4-3253-445a-8359-9b1827f2e2ca",
                   "parentUUID": null,
                   "isHook": false,
                   "skipped": true
@@ -574,7 +574,7 @@
               "failures": [],
               "pending": [],
               "skipped": [
-                "edc79bff-9d5d-46b6-b30e-7751d56f30fb"
+                "5af68ac4-3253-445a-8359-9b1827f2e2ca"
               ],
               "duration": 0,
               "root": false,
