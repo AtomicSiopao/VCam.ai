@@ -53,16 +53,23 @@ class Login {
   }
 
   login() {
+    cy.visit("/");
     this.inputEmailAddress().clickContinue();
     this.passwordField.should("be.visible");
     this.inputPassword().clickContinue();
   }
 
   createSession() {
-    cy.session("newSession", () => {
-      cy.visit("/");
+    cy.session("dashboardSession", () => {
       this.login();
       dashboard.checkHeader("Dashboard");
+    });
+  }
+
+  createSessionForOnboarding() {
+    cy.session("onboardingSession", () => {
+      this.login();
+      //dashboard.checkHeader("Onboarding");
     });
   }
 

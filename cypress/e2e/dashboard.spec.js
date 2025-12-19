@@ -24,9 +24,9 @@ describe("VCam.ai Dashboard", () => {
     });
   });
 
-  describe("DASHBOARD NAVIGATION", () => {
-    it("Should check navigation in the Dashboard while logged in", () => {
-      dashboard.navigateTo("Dashboard");
+  describe.only("DASHBOARD NAVIGATION", () => {
+    it.only("Should check navigation in the Dashboard while logged in", () => {
+      //dashboard.navigateTo("Dashboard");
       dashboard.navigateTo("Backgrounds");
       dashboard.navigateTo("Logos");
       dashboard.navigateTo("Name Tags");

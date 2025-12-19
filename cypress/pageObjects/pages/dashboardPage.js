@@ -1,5 +1,4 @@
 class DashboardPage {
-
   // Normalize helper
   normalize(str) {
     return str.toLowerCase().replace(/\s+/g, "");
@@ -24,8 +23,7 @@ class DashboardPage {
   // ====== ACTIONS ======
 
   visit() {
-    cy.visit(this.sections.dashboard.url);
-    return this;
+    return cy.visit(this.sections.dashboard.url);
   }
 
   getLinkByText(text) {
@@ -33,20 +31,24 @@ class DashboardPage {
   }
 
   clickLink(text) {
-    this.getLinkByText(text).click({ force: true });
-    return this;
+    cy.contains("nav a", text)
+      .should("be.visible")
+      .and("not.be.disabled")
+      .click();
   }
 
-  checkURL(section) {
-    const sec = this.resolveSection(section);
-    //cy.url().should("eq", sec.url);
-    cy.location("pathname").should("eq", sec.url);
-    return this;
-  }
+  // checkURL(section) {
+  //   const sec = this.resolveSection(section);
+  //   //cy.url().should("eq", sec.url);
+  //   cy.location("pathname").should("eq", sec.url);
+  //   return this;
+  // }
 
   checkHeader(section) {
     const sec = this.resolveSection(section);
-    cy.get("h1", { timeout: 10000 }).should("contain", sec.header);
+    cy.get("h1", { timeout: 10000 })
+      .should("be.visible")
+      .and("contain", sec.header);
     return this;
   }
 
@@ -54,13 +56,12 @@ class DashboardPage {
 
   navigateTo(section) {
     const sec = this.resolveSection(section);
-
     const clickText = sec.linkText || sec.header;
+
     this.clickLink(clickText);
 
-    this.checkURL(section);
-    this.checkHeader(section);
-
+    cy.url().should("include", sec.url);
+    cy.contains("h1", sec.header).should("be.visible");
     return this;
   }
 

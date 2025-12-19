@@ -1,5 +1,6 @@
 {
   "dashboard": { "url": "/", "header": "Dashboard" },
+  "onboarding": { "url": "/onboarding/purpose", "header": "How will you be using VCam?" },
   "backgrounds": {
     "url": "/app/backgrounds",
     "header": "Backgrounds"
