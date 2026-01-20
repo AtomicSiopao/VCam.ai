@@ -5,9 +5,9 @@
     "passes": 3,
     "pending": 0,
     "failures": 0,
-    "start": "2025-12-19T09:54:55.786Z",
-    "end": "2025-12-19T09:55:03.310Z",
-    "duration": 7524,
+    "start": "2026-01-20T06:52:21.621Z",
+    "end": "2026-01-20T06:52:30.125Z",
+    "duration": 8504,
     "testsRegistered": 3,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "5ba75513-e48f-440a-9c4f-4645ad1c9883",
+      "uuid": "32acbee5-ec23-4ec9-a7c7-ff7b3e3698d6",
       "title": "",
       "fullFile": "cypress/e2e/home.spec.js",
       "file": "cypress/e2e/home.spec.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "346040fb-63ca-4f62-8dff-52751936cc2e",
+          "uuid": "bea71c35-f0d9-4897-8a6d-0a76e7686cb6",
           "title": "VCam.ai Home Page",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "Should check that all the URLs in the header are correct",
               "fullTitle": "VCam.ai Home Page Should check that all the URLs in the header are correct",
               "timedOut": null,
-              "duration": 2022,
+              "duration": 2895,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -47,8 +47,8 @@
               "context": null,
               "code": "cy.fixture(\"navigation/positive.json\").then(links => {\n  header.checkHeaderLinks(links);\n});",
               "err": {},
-              "uuid": "83d9143b-22aa-41e9-bfee-09527192fb78",
-              "parentUUID": "346040fb-63ca-4f62-8dff-52751936cc2e",
+              "uuid": "905cee22-e014-463e-aac6-fa849d8c4a4c",
+              "parentUUID": "bea71c35-f0d9-4897-8a6d-0a76e7686cb6",
               "isHook": false,
               "skipped": false
             },
@@ -56,7 +56,7 @@
               "title": "Should check that all the URLs in the footer are correct",
               "fullTitle": "VCam.ai Home Page Should check that all the URLs in the footer are correct",
               "timedOut": null,
-              "duration": 2555,
+              "duration": 2447,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -65,8 +65,8 @@
               "context": null,
               "code": "cy.fixture(\"navigation/positive.json\").then(links => {\n  footer.checkFooterLinks(links);\n});",
               "err": {},
-              "uuid": "35d62e86-cac5-4bfb-8f2e-261b4f29d42a",
-              "parentUUID": "346040fb-63ca-4f62-8dff-52751936cc2e",
+              "uuid": "bf4a34e0-fd84-4b52-a05d-ac3736f3bfd4",
+              "parentUUID": "bea71c35-f0d9-4897-8a6d-0a76e7686cb6",
               "isHook": false,
               "skipped": false
             },
@@ -74,7 +74,7 @@
               "title": "Should check all URLs in the Home Page are correct",
               "fullTitle": "VCam.ai Home Page Should check all URLs in the Home Page are correct",
               "timedOut": null,
-              "duration": 1080,
+              "duration": 1096,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -83,22 +83,22 @@
               "context": null,
               "code": "homePage.checkHomePageLinks();",
               "err": {},
-              "uuid": "42e710ff-f065-4ab9-a504-403573c661cb",
-              "parentUUID": "346040fb-63ca-4f62-8dff-52751936cc2e",
+              "uuid": "f795820d-05c7-47c2-abdf-9994ee4821b8",
+              "parentUUID": "bea71c35-f0d9-4897-8a6d-0a76e7686cb6",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "83d9143b-22aa-41e9-bfee-09527192fb78",
-            "35d62e86-cac5-4bfb-8f2e-261b4f29d42a",
-            "42e710ff-f065-4ab9-a504-403573c661cb"
+            "905cee22-e014-463e-aac6-fa849d8c4a4c",
+            "bf4a34e0-fd84-4b52-a05d-ac3736f3bfd4",
+            "f795820d-05c7-47c2-abdf-9994ee4821b8"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 5657,
+          "duration": 6438,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
