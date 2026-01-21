@@ -1,44 +1,16 @@
 require("dotenv").config();
 const { defineConfig } = require("cypress");
-// const fs = require("fs");
-// const path = require("path");
 
-// Define the path to the cypress.env.json file
-// const envConfigPath = path.resolve(__dirname, "cypress.env.json");
+const getBaseUrl = () => {
+  // Always prioritize process.env.BASEURL from GitHub Secrets or .env
+  if (process.env.BASEURL) {
+    return process.env.BASEURL;
+  }
+  // Default to live dashboard if no BASEURL is provided
+  return "https://dashboard.vcam.ai/";
+};
 
-// let environmentConfig;
-
-// try {
-//   // Read the cypress.env.json file
-//   environmentConfig = JSON.parse(fs.readFileSync(envConfigPath, "utf-8"));
-// } catch (e) {
-//   // If the file doesn't exist, throw a helpful error
-//   if (e.code === "ENOENT") {
-//     throw new Error(
-//       `\n\nERROR: cypress.env.json not found.\n` +
-//       `Please create this file by copying cypress.env.json.example to cypress.env.json and filling in the values.\n` +
-//       `You can do this by running the following command in your terminal:\n` +
-//       `cp cypress.env.json.example cypress.env.json\n\n`
-//     );
-//   }
-//   // If there's another error, re-throw it
-//   throw e;
-// }
-
-// Get the current environment from the CYPRESS_ENV variable, default to 'live'
-// const environment = process.env.CYPRESS_ENV || "live";
-
-// Get the configuration for the current environment
-// const config = environmentConfig[environment];
-// const config = {
-//   baseUrl: process.env.BASEURL,
-//   email: process.env.VCAM_EMAIL,
-//   password: process.env.VCAM_PASSWORD,
-// }
-
-// if (!config) {
-//   throw new Error(`Configuration for environment "${environment}" not found in cypress.env.json`);
-// }
+const baseUrl = getBaseUrl();
 
 module.exports = defineConfig({
   reporter: "mochawesome",
@@ -52,15 +24,15 @@ module.exports = defineConfig({
   numTestsKeptInMemory: 5,
   e2e: {
     experimentalMemoryManagement: true,
-    experimentalSessionAndOrigin: true,
-    testIsolation: false, // Disable test isolation to maintain session across tests
+    testIsolation: true,
     chromeWebSecurity: false,
-    baseUrl: process.env.BASEURL,
+    baseUrl: baseUrl,
     video: false,
     specPattern: "./cypress/e2e/*.spec.js",
     viewportWidth: 1280,
     viewportHeight: 720,
     env: {
+      landingPageUrl: baseUrl.replace("dashboard.", ""),
       credentials: {
         email: process.env.VCAM_EMAIL,
         password: process.env.VCAM_PASSWORD,

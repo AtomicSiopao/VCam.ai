@@ -16,7 +16,7 @@ class HomePage {
 
   // ACTIONS
   visit() {
-    cy.visit("https://vcam.ai/");
+    cy.visit(Cypress.env("landingPageUrl") || "https://vcam.ai/");
     this.vcamLogo.should("be.visible");
     return this;
   }
